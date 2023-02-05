@@ -37,8 +37,8 @@ In the third part, I will focus on Google Earth Engine and explain how to move h
 This will require a basic understanding of JavaScript and of Python object-oriented programming, as well as to interface with GEE using the _gee_ Python module.
 This part may seem redunant at first (why should I move my computation on Google servers?), but, as your analyses expand in scale and need to access several databases, GEE shines as a great trade-off between complexity and effectiveness.
 
-To install all packages and modules used in this book, you can use the ![conda](https://docs.conda.io/en/latest) environment management system.
-The environment file is at ![https://github.com/emilio-berti/gis-course/conda/gis-course.yml](https://github.com/emilio-berti/gis-course/conda/gis-course.yml.
+To install all packages and modules used in this book, you can use the [conda](https://docs.conda.io/en/latest) environment management system.
+The environment file is at [https://github.com/emilio-berti/gis-course/conda/gis-course.yml](https://github.com/emilio-berti/gis-course/conda/gis-course.yml).
 
 ```bash
 conda create -n gis-course -f gis-course.yml
