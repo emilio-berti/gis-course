@@ -18,3 +18,27 @@ As most of the programming I know, I learnt it by myself making many mistakes.
 I still make mistakes, which means I am still learning.
 My aim with this book is to be the guide I did not have when I started learning GIS and that would have saved me some of the mistakes.
 This book is intended for newcomers to GIS; experienced users should definitely look for what they search somewhere else (most likely on [stackoverflow.com](https://stackoverflow.com)).
+
+The book is divided into three main parts:
+  1. General introduction to GIS.
+  2. Fundamentals for GIS analysis.
+  3. GIS analysis with Google Earth Engine.
+
+# Software requirements
+
+In the first part of this book, I will introduce the basic concepts of GIS  using R and Python.
+For this, I will use the _terra_ package for R and the _shapely_ module for Python.
+
+In the second part, I will cover the fundamentals of GIS analysis.
+I will explain the theory behind it and complement it with examples from actual analyses, introducing the most common workflows for R and Python.
+I will use the R package _terra_ and the Python moduels _shapely_, _geopandas_, _fiona_, and _plotly_.
+
+In the third part, I will focus on Google Earth Engine and explain how to move heavy GIS analyses on the cloud.
+This will require a basic understanding of JavaScript and of Python object-oriented programming, as well as to interface with GEE using the _gee_ Python module.
+This part may seem redunant at first (why should I move my computation on Google servers?), but, as your analyses expand in scale and need to access several databases, GEE shines as a great trade-off between complexity and effectiveness.
+
+To install all packages and modules used in this book, you can use the _conda_ environment management system: ![conda](https://docs.conda.io/en/latest).
+
+```{r setup, echo=FALSE, message=FALSE}
+library(terra)
+```
