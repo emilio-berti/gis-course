@@ -63,14 +63,36 @@ As most of the programming I know, I learnt it by myself making many mistakes.
 I still make mistakes, which means I am still learning.
 My aim with this book is to be the guide I did not have when I started learning GIS and that would have saved me some of the mistakes.
 This book is intended for newcomers to GIS; experienced users should definitely look for what they search somewhere else (most likely on <a href="https://stackoverflow.com">stackoverflow.com</a>).</p>
+<p>The book is divided into three main parts:
+1. General introduction to GIS.
+2. Fundamentals for GIS analysis.
+3. GIS analysis with Google Earth Engine.</p>
+<div id="software-requirements" class="section level2 unnumbered">
+<h2>Software requirements<a class="anchor" aria-label="anchor" href="#software-requirements"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the first part of this book, I will introduce the basic concepts of GIS using R and Python.
+For this, I will use the <em>terra</em> package for R and the <em>shapely</em> module for Python.</p>
+<p>In the second part, I will cover the fundamentals of GIS analysis.
+I will explain the theory behind it and complement it with examples from actual analyses, introducing the most common workflows for R and Python.
+I will use the R package <em>terra</em> and the Python moduels <em>shapely</em>, <em>geopandas</em>, <em>fiona</em>, and <em>plotly</em>.</p>
+<p>In the third part, I will focus on Google Earth Engine and explain how to move heavy GIS analyses on the cloud.
+This will require a basic understanding of JavaScript and of Python object-oriented programming, as well as to interface with GEE using the <em>gee</em> Python module.
+This part may seem redunant at first (why should I move my computation on Google servers?), but, as your analyses expand in scale and need to access several databases, GEE shines as a great trade-off between complexity and effectiveness.</p>
+<p>To install all packages and modules used in this book, you can use the <img src="https://docs.conda.io/en/latest" alt="conda"> environment management system.
+The environment file is at [<a href="https://github.com/emilio-berti/gis-course/conda/gis-course.yml" class="uri">https://github.com/emilio-berti/gis-course/conda/gis-course.yml</a>](<a href="https://github.com/emilio-berti/gis-course/conda/gis-course.yml" class="uri">https://github.com/emilio-berti/gis-course/conda/gis-course.yml</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">conda</span> create -n gis-course -f gis-course.yml</a></code></pre></div>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="empty"></div>
 <div class="next"><a href="a-history-of-gis.html">A history of GIS</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#preface">Preface</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#preface">Preface</a></li>
+<li><a class="nav-link" href="#software-requirements">Software requirements</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -86,7 +108,7 @@ This book is intended for newcomers to GIS; experienced users should definitely 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2023-02-04.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2023-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

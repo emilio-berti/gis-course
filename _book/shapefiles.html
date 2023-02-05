@@ -78,10 +78,14 @@ Common supplementary files are:</p>
 <p>These three fundamental types can also be “stacked”, e.g. one spatial feature can be represented by multiple points, lines, and polygons.
 In this case, we talk of <em>multipoints</em>, <em>multilines</em>, and <em>multipolygons</em>.
 The difference between multilines and polygons is that a polygon inscribe an area of space, that is it creates an “inside” area and an “outside” one, while multilines do not.</p>
+<div id="geometries-in-r" class="section level2">
+<h2>
+<span class="header-section-number">0.1</span> Geometries in R<a class="anchor" aria-label="anchor" href="#geometries-in-r"><i class="fas fa-link"></i></a>
+</h2>
 <p>Let’s see an exampled in R using the package <em>terra</em>.
 Remember to load the package if you did not already: <code><a href="https://rspatial.org/terra/">library(terra)</a></code>.
 In <em>terra</em>, all the hustle that came with older GIS software has been removed, and geometries can be simply be created using the <code>vect()</code> function.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">poi</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="va">xy</span><span class="op">)</span></span>
 <span><span class="fu">geomtype</span><span class="op">(</span><span class="va">poi</span><span class="op">)</span></span></code></pre></div>
@@ -89,7 +93,7 @@ In <em>terra</em>, all the hustle that came with older GIS software has been rem
 <p>This creates our first geometry, a point at the origin.
 To be meaningful, however, we must assign a coordinate reference system to our geometry.
 This can be done during the initialization itself.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">poi</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="va">xy</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
 <span><span class="va">poi</span></span></code></pre></div>
 <pre><code>##  class       : SpatVector 
@@ -101,28 +105,28 @@ This can be done during the initialization itself.</p>
 <p>Geometries can be converted into other types by <em>casting</em>.
 In <em>terra</em>, again, this has been made extremely easy.
 Let’s create some points.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">pois</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="va">xy</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
 <span><span class="fu">geomtype</span><span class="op">(</span><span class="va">pois</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "points"</code></pre>
 <p>And cast them to lines using <code>as.lines()</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ls</span> <span class="op">&lt;-</span> <span class="fu">as.lines</span><span class="op">(</span><span class="va">pois</span><span class="op">)</span></span>
 <span><span class="fu">geomtype</span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "lines"</code></pre>
 <p>We may want to cast this to polygons, notice however that these lines do not inscribe an area of space, i.e. they are not “closed”.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">pois</span>, cex <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 <p>Trying to cast these lines as polygons, will return an empty geometry.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pol</span> <span class="op">=</span> <span class="fu">as.polygons</span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span>
 <span><span class="fu">geomtype</span><span class="op">(</span><span class="va">pol</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "none"</code></pre>
 <p>To cast lines to polygons, two points must be identical.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">xy</span>, <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="co">#add bottom-right point</span></span>
 <span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">xy</span>, <span class="va">xy</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span> <span class="co">#add again first point</span></span>
@@ -137,14 +141,24 @@ Let’s create some points.</p>
 ##  coord. ref. : lon/lat WGS 84 (EPSG:4326)</code></pre>
 <p>If you want to cast points to polygons, it is considered best practice to first cast them to lines and then cast these into polygons (as I just did).
 Trying to cast points to polygons directly can introduce errors, if it works at all.</p>
+</div>
+<div id="geometries-in-python" class="section level2">
+<h2>
+<span class="header-section-number">0.2</span> Geometries in Python<a class="anchor" aria-label="anchor" href="#geometries-in-python"><i class="fas fa-link"></i></a>
+</h2>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="projections.html">Projections</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#shapefiles">Shapefiles</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#shapefiles">Shapefiles</a></li>
+<li><a class="nav-link" href="#geometries-in-r"><span class="header-section-number">0.1</span> Geometries in R</a></li>
+<li><a class="nav-link" href="#geometries-in-python"><span class="header-section-number">0.2</span> Geometries in Python</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -160,7 +174,7 @@ Trying to cast points to polygons directly can introduce errors, if it works at 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2023-02-04.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2023-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

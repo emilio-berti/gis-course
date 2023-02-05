@@ -24,7 +24,7 @@ The book is divided into three main parts:
   2. Fundamentals for GIS analysis.
   3. GIS analysis with Google Earth Engine.
 
-# Software requirements
+## Software requirements {-}
 
 In the first part of this book, I will introduce the basic concepts of GIS  using R and Python.
 For this, I will use the _terra_ package for R and the _shapely_ module for Python.
@@ -37,7 +37,12 @@ In the third part, I will focus on Google Earth Engine and explain how to move h
 This will require a basic understanding of JavaScript and of Python object-oriented programming, as well as to interface with GEE using the _gee_ Python module.
 This part may seem redunant at first (why should I move my computation on Google servers?), but, as your analyses expand in scale and need to access several databases, GEE shines as a great trade-off between complexity and effectiveness.
 
-To install all packages and modules used in this book, you can use the _conda_ environment management system: ![conda](https://docs.conda.io/en/latest).
+To install all packages and modules used in this book, you can use the ![conda](https://docs.conda.io/en/latest) environment management system.
+The environment file is at ![https://github.com/emilio-berti/gis-course/conda/gis-course.yml](https://github.com/emilio-berti/gis-course/conda/gis-course.yml.
+
+```bash
+conda create -n gis-course -f gis-course.yml
+```
 
 ```{r setup, echo=FALSE, message=FALSE}
 library(terra)
