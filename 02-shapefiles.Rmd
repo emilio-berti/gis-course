@@ -18,7 +18,7 @@ These three fundamental types can also be "stacked", e.g. one spatial feature ca
 In this case, we talk of _multipoints_, _multilines_, and _multipolygons_.
 The difference between multilines and polygons is that a polygon inscribe an area of space, that is it creates an "inside" area and an "outside" one, while multilines do not.
 
-## Geometries in R
+## Geometries in R {-}
 
 Let's see an exampled in R using the package _terra_. 
 Remember to load the package if you did not already: `library(terra)`.
@@ -88,4 +88,42 @@ pol
 If you want to cast points to polygons, it is considered best practice to first cast them to lines and then cast these into polygons (as I just did).
 Trying to cast points to polygons directly can introduce errors, if it works at all.
 
-## Geometries in Python
+## Geometries in Python {-}
+
+
+```{python}
+from shapely.geometry import Point, MultiPoint
+
+poi = Point(0, 0)
+poi.wkt
+```
+
+```{python}
+pois = MultiPoint([[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]])
+pois.wkt
+```
+
+```{python}
+from shapely.geometry import LineString, LinearRing
+
+ls = LineString([[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]])
+lr = LinearRing([[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]])
+ls.wkt
+```
+
+```{python}
+from shapely.geometry import Polygon, MultiPolygon
+
+pol = Polygon([[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]])
+pols = MultiPolygon([pol for i in range(3)])
+pols.wkt
+```
+
+Finally, _shapely_ has the `GeometryCollection` type to store geometries of more than one type.
+
+```{python}
+from shapely.geometry import GeometryCollection
+
+coll = GeometryCollection([pois, ls, pol])
+coll.wkt
+```
