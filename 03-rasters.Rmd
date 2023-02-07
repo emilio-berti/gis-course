@@ -1,0 +1,85 @@
+# Rasters {-}
+Because rasters are fundamentally 2D matrices with matadata, it is useful to understand what is a matrix before jumping straight into the topic.
+A 2D matrix $A$ is a mathematical object that can be represented as a grid.
+The elements $a_{ij}$ of the matrix $A$ are called its entries.
+The subscript in $a_{ij}$ indicate the row and column coordinates of the entries.
+For example, $a_{1,1}$ is the element in first row and first column, while $a_{3,4}$ is the element in the third row and fourth column.
+
+## Matrices in R {-}
+R provides a native support for matrices.
+In fact, R was designed to work with matrices, as statistical models (which are in the R's courtyard) can be represented as matrices.
+
+```{r}
+vals <- seq_len(9)
+A <- matrix(vals, byrow = TRUE, nrow = 3, ncol = 3)
+```
+
+When creating a matrix, there are two import things that are often neglected. 
+First, by specifying `byrow = TRUE`, we make sure that the values contained in `vals` are inserted into the matrix row-wise: $a_{12}$ is the second value of `vals`.
+This argument can be omitted if inserting elements column-wise is preferred; in this case, $a_{12}$ will be the fourth element of `vals`.
+As I find this a bit more confusing, I tend to prefer `byrow = TRUE` and work accordingly.
+I do not want to recommend this choice, but keep in mind the `byrow` argument if your matrix looks weird.
+Second, at least one of `ncol` or `nrow` should be specified, or the matrix will have only one column (column vectors).
+If you specify only one of the two, R will infer the other dimension.
+You can specify both of them and I invite you to do so for clarity, whenever possible.
+
+## Rasters {-}
+A raster is basically a 2D matrix with associated metadata.
+The most important metadata define:
+
+  - The spatial _extent_.
+  - The spatial _resolution_. 
+  - The coordinate reference system, _crs_.
+
+A raster without these three metadata is, in most cases, useless.
+
+## Rasters in R {-}
+In R, _terra_ provides all you need to work with rasters.
+To create a raster, you can use the `rast()` function.
+You can use as input a matrix.
+
+```{r}
+r <- rast(A, crs = "EPSG:4326")
+r
+```
+
+Or a dataframe.
+
+```{r}
+d <- data.frame(
+  x = rep(seq_len(10), 10), #x coord
+  y = rep(seq_len(10), each = 10), #y coord
+  z = seq_len(100) #values
+)
+r <- rast(d, crs = "EPSG:4326")
+```
+
+`rast()` is also used to read rasters from files.
+
+```{r, eval=FALSE}
+r <- rast("some-file.tif")
+```
+
+To write rasters to files, the `writeRaster()` function is used.
+
+```{r, eval=FALSE}
+writeRaster(r, "some-file.tif", overwrite = TRUE, datatype = "INT4U")
+```
+
+The `overwrite` and `datatype` arguments are optional, but I strongly recommend you to always include them.
+`overwrite = TRUE` simply make sure that, if the raster already exists on disk, it is overwritten; _terra_, by defaults, throw an error if the file exists and `overwrite = FALSE`, which is safer, but tends to be annoying on the long run.
+`datatype` specifies the numeric type of the matrix elements.
+Available types are _signed_ and _u_nsigned _int_egers and _fl_oa_t_ing point numbers.
+You also have to specify the number of bytes to use for each entry.
+Available dataype choices are:
+  - INT1U, unsigned integer of 1 byte: $\in [0, 2^8]$.
+  - INT2U, unsigned integer of 2 bytes: $\in [0, 2^{16}]$.
+  - INT2S, signed integer of 2 bytes: $\in [-2^8 + 1, 2^8]$. 
+  - INT4U, unsigned integer of 4 bytes: $\in [0, 2^{32}]$. 
+  - INT4S, signed integer of 4 bytes: $\in [-2^{16} + 1, 2^{16}]$. 
+  - FLT4S, signed floating point (real) number of 4 bytes: $\in [1.2 \cdot 10^{-38}, 3.4 \cdot 10^{38}]$
+  - FLT8S, signed floating point (real) number of 8 bytes: $\in [2.3 \cdot 10^{-308}, 1.7 \cdot 10^{308}]$
+  
+You can actually store numbers also outside the range of the numeric types, but this will come to the cost of precision, so you should try to avoid going outside ranges.
+This does not mean that you should always save files as _FLT8S_, as this will require more disk space and slow down writing/reading operations.
+For example, if you want to store the elevation at global scale with a precision of one meter, _INT2U_ is the optimal choice, as it is the smallest type that can store the information.
