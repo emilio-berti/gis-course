@@ -1,2 +1,0 @@
-geometries-in-r
-geometries-in-python
