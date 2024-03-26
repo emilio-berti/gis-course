@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Preface | GIS And Remote Sensing For Ecologists</title>
+<title>Basic Operations | GIS And Remote Sensing For Ecologists</title>
 <meta name="author" content="Emilio Berti">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="Preface | GIS And Remote Sensing For Ecologists">
+<meta property="og:title" content="Basic Operations | GIS And Remote Sensing For Ecologists">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Preface | GIS And Remote Sensing For Ecologists">
+<meta name="twitter:title" content="Basic Operations | GIS And Remote Sensing For Ecologists">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_Pro-0.4.5/font.css" rel="stylesheet">
@@ -20,9 +20,9 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<meta name="description" content="A book created with bookdown.">
-<meta property="og:description" content="A book created with bookdown.">
-<meta name="twitter:description" content="A book created with bookdown.">
+<meta name="description" content="There are some operations that are the staple of GIS. For example: What is the distance between two features? What is the area of a polygon? What is the value of a raster at specific locations?">
+<meta property="og:description" content="There are some operations that are the staple of GIS. For example: What is the distance between two features? What is the area of a polygon? What is the value of a raster at specific locations?">
+<meta name="twitter:description" content="There are some operations that are the staple of GIS. For example: What is the distance between two features? What is the area of a polygon? What is the value of a raster at specific locations?">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -44,12 +44,12 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="active" href="index.html">Preface</a></li>
+<li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
 <li><a class="" href="projections.html">Projections</a></li>
 <li><a class="" href="shapefiles.html">Shapefiles</a></li>
 <li><a class="" href="rasters.html">Rasters</a></li>
-<li><a class="" href="basic-operations.html">Basic Operations</a></li>
+<li><a class="active" href="basic-operations.html">Basic Operations</a></li>
 </ul>
 
         <div class="book-extra">
@@ -57,44 +57,19 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="preface" class="section level1 unnumbered">
-<h1>Preface<a class="anchor" aria-label="anchor" href="#preface"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="basic-operations" class="section level1 unnumbered">
+<h1>Basic Operations<a class="anchor" aria-label="anchor" href="#basic-operations"><i class="fas fa-link"></i></a>
 </h1>
-<p>I started learning GIS in 2017 during my PhD.
-As most of the programming I know, I learnt it by myself making many mistakes.
-I still make mistakes, which means I am still learning.
-My aim with this book is to be the guide I did not have when I started learning GIS and that would have saved me some of the mistakes.
-This book is intended for newcomers to GIS; experienced users should definitely look for what they search somewhere else (most likely on <a href="https://stackoverflow.com">stackoverflow.com</a>).</p>
-<p>The book is divided into three main parts:
-1. General introduction to GIS.
-2. Fundamentals for GIS analysis.
-3. GIS analysis with Google Earth Engine.</p>
-<div id="software-requirements" class="section level2 unnumbered">
-<h2>Software requirements<a class="anchor" aria-label="anchor" href="#software-requirements"><i class="fas fa-link"></i></a>
-</h2>
-<p>In the first part of this book, I will introduce the basic concepts of GIS using R and Python.
-For this, I will use the <em>terra</em> package for R and the <em>shapely</em> module for Python.</p>
-<p>In the second part, I will cover the fundamentals of GIS analysis.
-I will explain the theory behind it and complement it with examples from actual analyses, introducing the most common workflows for R and Python.
-I will use the R package <em>terra</em> and the Python moduels <em>shapely</em>, <em>geopandas</em>, <em>fiona</em>, and <em>plotly</em>.</p>
-<p>In the third part, I will focus on Google Earth Engine and explain how to move heavy GIS analyses on the cloud.
-This will require a basic understanding of JavaScript and of Python object-oriented programming, as well as to interface with GEE using the <em>gee</em> Python module.
-This part may seem redunant at first (why should I move my computation on Google servers?), but, as your analyses expand in scale and need to access several databases, GEE shines as a great trade-off between complexity and effectiveness.</p>
-<p>To install all packages and modules used in this book, you can use the <a href="https://docs.conda.io/en/latest">conda</a> environment management system.
-The environment file is at <a href="https://github.com/emilio-berti/gis-course/conda/gis-course.yml">https://github.com/emilio-berti/gis-course/blob/master/conda/gis-course.yml</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">conda</span> env create --file=gis-course.yml</a></code></pre></div>
+<p>There are some operations that are the staple of GIS.
+For example: What is the distance between two features? What is the area of a polygon? What is the value of a raster at specific locations?</p>
 
 </div>
-</div>
   <div class="chapter-nav">
+<div class="prev"><a href="rasters.html">Rasters</a></div>
 <div class="empty"></div>
-<div class="next"><a href="a-history-of-gis.html">A history of GIS</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#preface">Preface</a></li>
-<li><a class="nav-link" href="#software-requirements">Software requirements</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#basic-operations">Basic Operations</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
