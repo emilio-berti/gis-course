@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Rasters | GIS And Remote Sensing For Ecologists</title>
+<title>3 Rasters | GIS And Remote Sensing For Ecologists</title>
 <meta name="author" content="Emilio Berti">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="Rasters | GIS And Remote Sensing For Ecologists">
+<meta property="og:title" content="3 Rasters | GIS And Remote Sensing For Ecologists">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rasters | GIS And Remote Sensing For Ecologists">
+<meta name="twitter:title" content="3 Rasters | GIS And Remote Sensing For Ecologists">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_Pro-0.4.5/font.css" rel="stylesheet">
@@ -46,10 +46,11 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
-<li><a class="" href="projections.html">Projections</a></li>
-<li><a class="" href="shapefiles.html">Shapefiles</a></li>
-<li><a class="active" href="rasters.html">Rasters</a></li>
-<li><a class="" href="basic-operations.html">Basic Operations</a></li>
+<li><a class="" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
+<li><a class="" href="shapefiles.html"><span class="header-section-number">2</span> Shapefiles</a></li>
+<li><a class="active" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
+<li><a class="" href="basic-operations.html"><span class="header-section-number">4</span> Basic Operations</a></li>
+<li><a class="" href="vector-operations.html"><span class="header-section-number">5</span> Vector operations</a></li>
 </ul>
 
         <div class="book-extra">
@@ -57,16 +58,18 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rasters" class="section level1 unnumbered">
-<h1>Rasters<a class="anchor" aria-label="anchor" href="#rasters"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rasters" class="section level1">
+<h1>
+<span class="header-section-number">3</span> Rasters<a class="anchor" aria-label="anchor" href="#rasters"><i class="fas fa-link"></i></a>
 </h1>
 <p>Because rasters are fundamentally 2D matrices with matadata, it is useful to understand what is a matrix before jumping straight into the topic.
 A 2D matrix <span class="math inline">\(A\)</span> is a mathematical object that can be represented as a grid.
 The elements <span class="math inline">\(a_{ij}\)</span> of the matrix <span class="math inline">\(A\)</span> are called its entries.
 The subscript in <span class="math inline">\(a_{ij}\)</span> indicate the row and column coordinates of the entries.
 For example, <span class="math inline">\(a_{1,1}\)</span> is the element in first row and first column, while <span class="math inline">\(a_{3,4}\)</span> is the element in the third row and fourth column.</p>
-<div id="matrices-in-r" class="section level2 unnumbered">
-<h2>Matrices in R<a class="anchor" aria-label="anchor" href="#matrices-in-r"><i class="fas fa-link"></i></a>
+<div id="matrices-in-r" class="section level2">
+<h2>
+<span class="header-section-number">3.1</span> Matrices in R<a class="anchor" aria-label="anchor" href="#matrices-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>R provides a native support for matrices.
 In fact, R was designed to work with matrices, as statistical models (which are in the R’s courtyard) can be represented as matrices.</p>
@@ -82,8 +85,9 @@ Second, at least one of <code>ncol</code> or <code>nrow</code> should be specifi
 If you specify only one of the two, R will infer the other dimension.
 You can specify both of them and I invite you to do so for clarity, whenever possible.</p>
 </div>
-<div id="rasters-1" class="section level2 unnumbered">
-<h2>Rasters<a class="anchor" aria-label="anchor" href="#rasters-1"><i class="fas fa-link"></i></a>
+<div id="rasters-1" class="section level2">
+<h2>
+<span class="header-section-number">3.2</span> Rasters<a class="anchor" aria-label="anchor" href="#rasters-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>A raster is basically a 2D matrix with associated metadata.
 The most important metadata define:</p>
@@ -94,8 +98,9 @@ The most important metadata define:</p>
 </ul>
 <p>A raster without these three metadata is, in most cases, useless.</p>
 </div>
-<div id="rasters-in-r" class="section level2 unnumbered">
-<h2>Rasters in R<a class="anchor" aria-label="anchor" href="#rasters-in-r"><i class="fas fa-link"></i></a>
+<div id="rasters-in-r" class="section level2">
+<h2>
+<span class="header-section-number">3.3</span> Rasters in R<a class="anchor" aria-label="anchor" href="#rasters-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>In R, <em>terra</em> provides all you need to work with rasters.
 To create a raster, you can use the <code>rast()</code> function.
@@ -147,8 +152,9 @@ Available dataype choices are:</p>
 This does not mean that you should always save files as <em>FLT8S</em>, as this will require more disk space and slow down writing/reading operations.
 For example, if you want to store the elevation at global scale with a precision of one meter, <em>INT2U</em> is the optimal choice, as it is the smallest type that can store the information.</p>
 </div>
-<div id="rasters-in-python" class="section level2 unnumbered">
-<h2>Rasters in Python<a class="anchor" aria-label="anchor" href="#rasters-in-python"><i class="fas fa-link"></i></a>
+<div id="rasters-in-python" class="section level2">
+<h2>
+<span class="header-section-number">3.4</span> Rasters in Python<a class="anchor" aria-label="anchor" href="#rasters-in-python"><i class="fas fa-link"></i></a>
 </h2>
 <p>In Python, reading and plotting rasters is easily achieved using <em>rasterio</em> and <em>matplotlib</em>.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb31-1" title="1"><span class="im">import</span> rasterio</a>
@@ -175,16 +181,16 @@ This is when Python scalability comes in handy, but don’t be fooled: the Pytho
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="shapefiles.html">Shapefiles</a></div>
-<div class="next"><a href="basic-operations.html">Basic Operations</a></div>
+<div class="prev"><a href="shapefiles.html"><span class="header-section-number">2</span> Shapefiles</a></div>
+<div class="next"><a href="basic-operations.html"><span class="header-section-number">4</span> Basic Operations</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rasters">Rasters</a></li>
-<li><a class="nav-link" href="#matrices-in-r">Matrices in R</a></li>
-<li><a class="nav-link" href="#rasters-1">Rasters</a></li>
-<li><a class="nav-link" href="#rasters-in-r">Rasters in R</a></li>
-<li><a class="nav-link" href="#rasters-in-python">Rasters in Python</a></li>
+<li><a class="nav-link" href="#rasters"><span class="header-section-number">3</span> Rasters</a></li>
+<li><a class="nav-link" href="#matrices-in-r"><span class="header-section-number">3.1</span> Matrices in R</a></li>
+<li><a class="nav-link" href="#rasters-1"><span class="header-section-number">3.2</span> Rasters</a></li>
+<li><a class="nav-link" href="#rasters-in-r"><span class="header-section-number">3.3</span> Rasters in R</a></li>
+<li><a class="nav-link" href="#rasters-in-python"><span class="header-section-number">3.4</span> Rasters in Python</a></li>
 </ul>
 
       <div class="book-extra">
@@ -201,7 +207,7 @@ This is when Python scalability comes in handy, but don’t be fooled: the Pytho
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2023-02-10.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-03-26.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

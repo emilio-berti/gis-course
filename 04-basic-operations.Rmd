@@ -1,9 +1,9 @@
-# Basic Operations {-}
+# Basic Operations
 
 There are some operations that are the staple of GIS.
 For example: What is the distance between two features? What is the area of a polygon? What is the value of a raster at specific locations?
 
-```{shell, eval=FALSE, echo=FALSE}
+```{bash, eval=FALSE, echo=FALSE}
 if [[ ! -d "data" ]]
 then
   mkdir data #create data directory
@@ -38,7 +38,7 @@ v <- crop(v, e)
 writeVector(v, "EU.shp")
 ```
 
-```{shell, eval=FALSE, echo=FALSE}
+```{bash, eval=FALSE, echo=FALSE}
 cd data
 rm *
 mv ../EU.* .

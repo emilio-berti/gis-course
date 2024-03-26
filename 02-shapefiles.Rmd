@@ -1,4 +1,4 @@
-# Shapefiles {-}
+# Shapefiles
 
 Shapefiles contain geospatial vector data, also called geometries.
 A shapefile has the extension _.shp_ and it is usually accompanied by other files.
@@ -18,7 +18,7 @@ These three fundamental types can also be "stacked", e.g. one spatial feature ca
 In this case, we talk of _multipoints_, _multilines_, and _multipolygons_.
 The difference between multilines and polygons is that a polygon inscribe an area of space, that is it creates an "inside" area and an "outside" one, while multilines do not.
 
-## Geometries in R {-}
+## Geometries in R
 
 Let's see an exampled in R using the package _terra_. 
 Remember to load the package if you did not already: `library(terra)`.
@@ -88,7 +88,7 @@ pol
 If you want to cast points to polygons, it is considered best practice to first cast them to lines and then cast these into polygons (as I just did).
 Trying to cast points to polygons directly can introduce errors, if it works at all.
 
-## Geometries in Python {-}
+## Geometries in Python
 
 
 ```{python}

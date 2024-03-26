@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Shapefiles | GIS And Remote Sensing For Ecologists</title>
+<title>2 Shapefiles | GIS And Remote Sensing For Ecologists</title>
 <meta name="author" content="Emilio Berti">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="Shapefiles | GIS And Remote Sensing For Ecologists">
+<meta property="og:title" content="2 Shapefiles | GIS And Remote Sensing For Ecologists">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shapefiles | GIS And Remote Sensing For Ecologists">
+<meta name="twitter:title" content="2 Shapefiles | GIS And Remote Sensing For Ecologists">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_Pro-0.4.5/font.css" rel="stylesheet">
@@ -46,10 +46,11 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
-<li><a class="" href="projections.html">Projections</a></li>
-<li><a class="active" href="shapefiles.html">Shapefiles</a></li>
-<li><a class="" href="rasters.html">Rasters</a></li>
-<li><a class="" href="basic-operations.html">Basic Operations</a></li>
+<li><a class="" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
+<li><a class="active" href="shapefiles.html"><span class="header-section-number">2</span> Shapefiles</a></li>
+<li><a class="" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
+<li><a class="" href="basic-operations.html"><span class="header-section-number">4</span> Basic Operations</a></li>
+<li><a class="" href="vector-operations.html"><span class="header-section-number">5</span> Vector operations</a></li>
 </ul>
 
         <div class="book-extra">
@@ -57,8 +58,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="shapefiles" class="section level1 unnumbered">
-<h1>Shapefiles<a class="anchor" aria-label="anchor" href="#shapefiles"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="shapefiles" class="section level1">
+<h1>
+<span class="header-section-number">2</span> Shapefiles<a class="anchor" aria-label="anchor" href="#shapefiles"><i class="fas fa-link"></i></a>
 </h1>
 <p>Shapefiles contain geospatial vector data, also called geometries.
 A shapefile has the extension <em>.shp</em> and it is usually accompanied by other files.
@@ -80,8 +82,9 @@ Common supplementary files are:</p>
 <p>These three fundamental types can also be “stacked”, e.g. one spatial feature can be represented by multiple points, lines, and polygons.
 In this case, we talk of <em>multipoints</em>, <em>multilines</em>, and <em>multipolygons</em>.
 The difference between multilines and polygons is that a polygon inscribe an area of space, that is it creates an “inside” area and an “outside” one, while multilines do not.</p>
-<div id="geometries-in-r" class="section level2 unnumbered">
-<h2>Geometries in R<a class="anchor" aria-label="anchor" href="#geometries-in-r"><i class="fas fa-link"></i></a>
+<div id="geometries-in-r" class="section level2">
+<h2>
+<span class="header-section-number">2.1</span> Geometries in R<a class="anchor" aria-label="anchor" href="#geometries-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s see an exampled in R using the package <em>terra</em>.
 Remember to load the package if you did not already: <code><a href="https://rspatial.org/terra/">library(terra)</a></code>.
@@ -143,8 +146,9 @@ Let’s create some points.</p>
 <p>If you want to cast points to polygons, it is considered best practice to first cast them to lines and then cast these into polygons (as I just did).
 Trying to cast points to polygons directly can introduce errors, if it works at all.</p>
 </div>
-<div id="geometries-in-python" class="section level2 unnumbered">
-<h2>Geometries in Python<a class="anchor" aria-label="anchor" href="#geometries-in-python"><i class="fas fa-link"></i></a>
+<div id="geometries-in-python" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Geometries in Python<a class="anchor" aria-label="anchor" href="#geometries-in-python"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1"><span class="im">from</span> shapely.geometry <span class="im">import</span> Point, MultiPoint</a>
 <a class="sourceLine" id="cb15-2" title="2"></a>
@@ -176,14 +180,14 @@ Trying to cast points to polygons directly can introduce errors, if it works at 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="projections.html">Projections</a></div>
-<div class="next"><a href="rasters.html">Rasters</a></div>
+<div class="prev"><a href="projections.html"><span class="header-section-number">1</span> Projections</a></div>
+<div class="next"><a href="rasters.html"><span class="header-section-number">3</span> Rasters</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#shapefiles">Shapefiles</a></li>
-<li><a class="nav-link" href="#geometries-in-r">Geometries in R</a></li>
-<li><a class="nav-link" href="#geometries-in-python">Geometries in Python</a></li>
+<li><a class="nav-link" href="#shapefiles"><span class="header-section-number">2</span> Shapefiles</a></li>
+<li><a class="nav-link" href="#geometries-in-r"><span class="header-section-number">2.1</span> Geometries in R</a></li>
+<li><a class="nav-link" href="#geometries-in-python"><span class="header-section-number">2.2</span> Geometries in Python</a></li>
 </ul>
 
       <div class="book-extra">
@@ -200,7 +204,7 @@ Trying to cast points to polygons directly can introduce errors, if it works at 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2023-02-10.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-03-26.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
