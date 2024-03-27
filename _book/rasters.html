@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>3 Rasters | GIS And Remote Sensing For Ecologists</title>
 <meta name="author" content="Emilio Berti">
-<meta name="generator" content="bookdown 0.32 with bs4_book()">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
 <meta property="og:title" content="3 Rasters | GIS And Remote Sensing For Ecologists">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3 Rasters | GIS And Remote Sensing For Ecologists">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_Pro-0.4.5/font.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_Pro-0.4.9/font.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source%20Code%20Pro&amp;display=swap" rel="stylesheet">
-<script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs3compat-0.6.2/transition.js"></script><script src="libs/bs3compat-0.6.2/tabs.js"></script><script src="libs/bs3compat-0.6.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -58,7 +58,7 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rasters" class="section level1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rasters" class="section level1" number="3">
 <h1>
 <span class="header-section-number">3</span> Rasters<a class="anchor" aria-label="anchor" href="#rasters"><i class="fas fa-link"></i></a>
 </h1>
@@ -67,13 +67,13 @@ A 2D matrix <span class="math inline">\(A\)</span> is a mathematical object that
 The elements <span class="math inline">\(a_{ij}\)</span> of the matrix <span class="math inline">\(A\)</span> are called its entries.
 The subscript in <span class="math inline">\(a_{ij}\)</span> indicate the row and column coordinates of the entries.
 For example, <span class="math inline">\(a_{1,1}\)</span> is the element in first row and first column, while <span class="math inline">\(a_{3,4}\)</span> is the element in the third row and fourth column.</p>
-<div id="matrices-in-r" class="section level2">
+<div id="matrices-in-r" class="section level2" number="3.1">
 <h2>
 <span class="header-section-number">3.1</span> Matrices in R<a class="anchor" aria-label="anchor" href="#matrices-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>R provides a native support for matrices.
 In fact, R was designed to work with matrices, as statistical models (which are in the R’s courtyard) can be represented as matrices.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span></span>
 <span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">vals</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p>When creating a matrix, there are two import things that are often neglected.
@@ -85,7 +85,7 @@ Second, at least one of <code>ncol</code> or <code>nrow</code> should be specifi
 If you specify only one of the two, R will infer the other dimension.
 You can specify both of them and I invite you to do so for clarity, whenever possible.</p>
 </div>
-<div id="rasters-1" class="section level2">
+<div id="rasters-1" class="section level2" number="3.2">
 <h2>
 <span class="header-section-number">3.2</span> Rasters<a class="anchor" aria-label="anchor" href="#rasters-1"><i class="fas fa-link"></i></a>
 </h2>
@@ -98,14 +98,14 @@ The most important metadata define:</p>
 </ul>
 <p>A raster without these three metadata is, in most cases, useless.</p>
 </div>
-<div id="rasters-in-r" class="section level2">
+<div id="rasters-in-r" class="section level2" number="3.3">
 <h2>
 <span class="header-section-number">3.3</span> Rasters in R<a class="anchor" aria-label="anchor" href="#rasters-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>In R, <em>terra</em> provides all you need to work with rasters.
 To create a raster, you can use the <code>rast()</code> function.
 You can use as input a matrix.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="va">A</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
 <span><span class="va">r</span></span></code></pre></div>
 <pre><code>## class       : SpatRaster 
@@ -113,12 +113,12 @@ You can use as input a matrix.</p>
 ## resolution  : 1, 1  (x, y)
 ## extent      : 0, 3, 0, 3  (xmin, xmax, ymin, ymax)
 ## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
-## source      : memory 
+## source(s)   : memory
 ## name        : lyr.1 
 ## min value   :     1 
 ## max value   :     9</code></pre>
 <p>Or a dataframe.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span>, <span class="co">#x coord</span></span>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, <span class="co">#y coord</span></span>
@@ -126,10 +126,10 @@ You can use as input a matrix.</p>
 <span><span class="op">)</span></span>
 <span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="va">d</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span></code></pre></div>
 <p><code>rast()</code> is also used to read rasters from files.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="st">"some-file.tif"</span><span class="op">)</span></span></code></pre></div>
 <p>To write rasters to files, the <code>writeRaster()</code> function is used.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">writeRaster</span><span class="op">(</span><span class="va">r</span>, <span class="st">"some-file.tif"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span>, datatype <span class="op">=</span> <span class="st">"INT4U"</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>overwrite</code> and <code>datatype</code> arguments are optional, but I strongly recommend you to always include them.
 <code>overwrite = TRUE</code> simply make sure that, if the raster already exists on disk, it is overwritten; <em>terra</em>, by defaults, throw an error if the file exists and <code>overwrite = FALSE</code>, which is safer, but tends to be annoying on the long run.
@@ -151,32 +151,6 @@ Available dataype choices are:</p>
 <p>You can actually store numbers also outside the range of the numeric types, but this will come to the cost of precision, so you should try to avoid going outside ranges.
 This does not mean that you should always save files as <em>FLT8S</em>, as this will require more disk space and slow down writing/reading operations.
 For example, if you want to store the elevation at global scale with a precision of one meter, <em>INT2U</em> is the optimal choice, as it is the smallest type that can store the information.</p>
-</div>
-<div id="rasters-in-python" class="section level2">
-<h2>
-<span class="header-section-number">3.4</span> Rasters in Python<a class="anchor" aria-label="anchor" href="#rasters-in-python"><i class="fas fa-link"></i></a>
-</h2>
-<p>In Python, reading and plotting rasters is easily achieved using <em>rasterio</em> and <em>matplotlib</em>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb31-1" title="1"><span class="im">import</span> rasterio</a>
-<a class="sourceLine" id="cb31-2" title="2"><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</a>
-<a class="sourceLine" id="cb31-3" title="3"></a>
-<a class="sourceLine" id="cb31-4" title="4">r <span class="op">=</span> rasterio.<span class="bu">open</span>(<span class="st">'raster-file.tif'</span>)</a>
-<a class="sourceLine" id="cb31-5" title="5">plt.imshow(r.read(<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb31-6" title="6">plt.show()</a></code></pre></div>
-<p>Other raster operations are, however, much more convoluted than their equivalent in R.
-As this is an introductory course to GIS, I preferred to omit raster manipulation in Python for the sake of your mental health.
-In addition, and to be completely honest, I don’t know much of this myself.
-I almost never had to use Python for raster manipulation and, when I do, it’s as a last resort in desperate cases.
-There are several reasons for this:</p>
-<ol style="list-style-type: decimal">
-<li>
-<em>terra</em> in R provides a much more friendly environment to work with rasters than <em>rasterio</em>.</li>
-<li>QGIS has Python modules to work with rasters that are much more friendly and can be accessed easily (also the source code) through the GUI.</li>
-<li>Almost all raster manipulations I perform for larger projects, i.e. when scalability is important and R starts to feel a bit stiff, can be performed on Google servers quite easily.</li>
-</ol>
-<p>There is one big exception to this: the Python API for Google Earth Engine.
-As we will see in …, Google provides an API in Python to access remote-sensing products and computing power.
-This is when Python scalability comes in handy, but don’t be fooled: the Python API is just a way to interface with Google servers, operations are not actually performed in Python or using Python modules.</p>
 
 </div>
 </div>
@@ -190,7 +164,6 @@ This is when Python scalability comes in handy, but don’t be fooled: the Pytho
 <li><a class="nav-link" href="#matrices-in-r"><span class="header-section-number">3.1</span> Matrices in R</a></li>
 <li><a class="nav-link" href="#rasters-1"><span class="header-section-number">3.2</span> Rasters</a></li>
 <li><a class="nav-link" href="#rasters-in-r"><span class="header-section-number">3.3</span> Rasters in R</a></li>
-<li><a class="nav-link" href="#rasters-in-python"><span class="header-section-number">3.4</span> Rasters in Python</a></li>
 </ul>
 
       <div class="book-extra">
@@ -207,7 +180,7 @@ This is when Python scalability comes in handy, but don’t be fooled: the Pytho
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-03-26.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-03-27.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -84,28 +84,3 @@ Available dataype choices are:
 You can actually store numbers also outside the range of the numeric types, but this will come to the cost of precision, so you should try to avoid going outside ranges.
 This does not mean that you should always save files as _FLT8S_, as this will require more disk space and slow down writing/reading operations.
 For example, if you want to store the elevation at global scale with a precision of one meter, _INT2U_ is the optimal choice, as it is the smallest type that can store the information.
-
-## Rasters in Python
-In Python, reading and plotting rasters is easily achieved using _rasterio_ and _matplotlib_.
-
-```{python, eval=FALSE}
-import rasterio
-from matplotlib import pyplot as plt
-
-r = rasterio.open('raster-file.tif')
-plt.imshow(r.read(1))
-plt.show()
-```
-Other raster operations are, however, much more convoluted than their equivalent in R.
-As this is an introductory course to GIS, I preferred to omit raster manipulation in Python for the sake of your mental health.
-In addition, and to be completely honest, I don't know much of this myself.
-I almost never had to use Python for raster manipulation and, when I do, it's as a last resort in desperate cases.
-There are several reasons for this:
-
-  1. _terra_ in R provides a much more friendly environment to work with rasters than _rasterio_.
-  2. QGIS has Python modules to work with rasters that are much more friendly and can be accessed easily (also the source code) through the GUI.
-  3. Almost all raster manipulations I perform for larger projects, i.e. when scalability is important and R starts to feel a bit stiff, can be performed on Google servers quite easily.
-
-There is one big exception to this: the Python API for Google Earth Engine.
-As we will see in ..., Google provides an API in Python to access remote-sensing products and computing power.
-This is when Python scalability comes in handy, but don't be fooled: the Python API is just a way to interface with Google servers, operations are not actually performed in Python or using Python modules.
