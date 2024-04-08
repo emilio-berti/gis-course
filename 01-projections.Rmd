@@ -1,3 +1,36 @@
 # Projections
 
-The most used 
+A map projection is a 2D representation of the Earth surface.
+There are several type of projections, each approximating Earth surface in different ways.
+Importantly, each spatial data must have an associated coordinate reference system (CRS), which defines how the 2D map and the Earth surface are related.
+In GIS courses, CRS is usually only briefly discussed or not talked at all.
+However, CRS is quite a complicated topic and one that can introduce many errors in your analysis:
+if you choose the wrong CRS, then your calculations can be extremely biased.
+
+I will give only a brief introduction to CRS for two reasons:
+
+  1. They are a very complex topic and going into details takes a very long time.
+  2. Honestly, I am still figuring out some of the most obscure details of some CRS and I do not want to say incorrect things.
+
+## Geographic vs Projectes CRS
+
+A geographic CRS is one where locations of points are described by longitude and latitude, i.e. the angle between the Prime meridian (an almost mythological creature) and the location and the angle between the Equator and the location, respectively.
+The most used geographic CRS is WGS84 (EPSG:4326).
+
+A projected CRS is a system to represent the 3D Earth surface on a plane.
+Representing a 3D object into a 2D plane accurately is not possible.
+Therefore, projectons always distort a property of the Earth surface, in particular, at least one of: distance, angular conformity, and area.
+Projections can be grouped into types, depending on which property of the Earth surface they do not distort:
+
+  - Conformal projections: they correctly represent the angles between points and, thus, shapes. E.g., ESRI:54004 (Mercator).
+  - Equidistant: they correctly represent distances. E.g., ESRI:54002.
+  - Equal-area: they corretly represent areas. E.g. ESRI:54034.
+
+ESRI stands for Environmental Systems Research Institute, Inc., which is the company that developed ArcGIS and created a code standard for projections.
+The other commonly used standard is maintained by the European Petroleum Survey Group (EPSG).
+For instance, World Mercator (conformal) is also EPSG:3395.
+
+A common projected CRS is the Universal Transverse Mercator projection (conformal), e.g. EPSG:32632.
+We will talk more about this in a later chapter.
+You can find an overview of ESRI and EPSG projections at <https://spatialreference.org/>.
+Wikipedia also has a nice list with the property of each projection: <https://en.wikipedia.org/wiki/List_of_map_projections>
