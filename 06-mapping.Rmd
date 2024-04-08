@@ -1,0 +1,88 @@
+# Mapping
+
+One of the most common goal of GIS is to produce a map of a phenomenon or process.
+
+As example, we will use data from the Italian National Insitute of Statistics (ISTAT):
+
+  1. Administrative division shapefile (<https://www.istat.it/it/archivio/222527>).
+  2. GDP of each of the regions, the second administrative division after the State.
+
+Both of these are in the _data/ISTAT/_ folder, in the respective subdirectories.
+
+
+Load the vector shapefile of EU countries:
+```{r}
+library(terra)
+
+# shapefile of regions
+regs <- vect("data/ISTAT/Limiti01012024_g/Reg01012024_g/Reg01012024_g_WGS84.shp")
+
+# shapefile of cities
+cities <- vect("data/ISTAT/Limiti01012024_g/Com01012024_g/Com01012024_g_WGS84.shp")
+
+# noise pollution
+noise <- read.csv("data/ISTAT/city-acoustic-noise.csv")
+noise <- noise[noise$TIME_PERIOD == 2012, ] #only 2012
+noise <- noise[noise$TIME_PERIOD != "IT", ] #only city level
+noise <- noise[noise$TYPE_OF_MONITORING == 1, ] #sensor type
+noise <- noise[!is.na(noise$OBS_VALUE), ] #remove empty
+noise <- noise[noise$DATA_TYPE == "MON_LIM", ] #monthly limit
+
+# not all cities studies: remove not studied
+studied <- intersect(cities$PRO_COM_T, noise$REF_AREA)
+cities <- cities[cities$PRO_COM_T %in% studied]
+noise <- noise[noise$REF_AREA %in% studied, ]
+
+# add attribute
+cities$noise <- noise$OBS_VALUE[sapply(noise$REF_AREA, \(x) which(cities$PRO_COM_T == x))]
+cities <- cities[order(cities$noise)]
+cities <- cities[cities$noise > 0] #suspect data
+
+# map -----------
+noise_vals <- unique(cities$noise)
+colors <- colorRampPalette(c("green3", "tomato"))(length(noise_vals))
+pal <- c()
+for ( x in noise_vals ) {
+  pal <- c(pal, rep(colors[which(x == noise_vals)], sum(cities$noise == x)))
+}
+
+#plot(regs)
+#plot(cities, col = as.numeric(cities$noise), add = TRUE)
+
+# regional statistics ----------
+regs$noise <- NA
+regs$noise_cv <- NA
+for ( i in seq_along(regs) ) {
+  within <- relate(cities, regs[i], "within")
+  ids <- which(within, arr.ind = TRUE)[, "row"]
+  regs$noise[ids] <- mean(cities$noise[ids])
+  regs$noise_cv[ids] <-  sd(cities$noise[ids]) / mean(cities$noise[ids])
+}
+regs$noise <- as.numeric(regs$noise)
+regs$noise_cv <- as.numeric(regs$noise_cv)
+
+layout(matrix(c(2, 3, 1, 1), byrow = TRUE, ncol = 2))
+par(mar = c(4, 4, 2, 2))
+scatter.smooth(
+  regs$noise, regs$noise_cv,
+  pch = 20, cex = 2, frame = FALSE,
+  xlab = "Noise",
+  ylab = "Variability (CV)"
+)
+plot(
+  regs,
+  "noise",
+  col = colorRampPalette(c("green2", "tomato"))(20),
+  type = "continuous",
+  axes = FALSE,
+  main = "Noise pollution"
+)
+plot(
+  regs,
+  "noise_cv",
+  col = colorRampPalette(c("grey90", "dodgerblue2"))(20),
+  type = "continuous",
+  axes = FALSE,
+  main = "Variability (CV)"
+)
+```
