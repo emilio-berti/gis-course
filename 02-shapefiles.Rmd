@@ -39,11 +39,8 @@ poi <- vect(xy, crs = "EPSG:4326")
 poi
 ```
 
-_terra_ DOES IT USE THE MOST FUNDAMENTAL TYPE?
-
-
 Geometries can be converted into other types by _casting_.
-In _terra_, again, this has been made extremely easy.
+In _terra_ this has been made extremely easy.
 Let's create some points.
 
 ```{r}
@@ -83,7 +80,46 @@ pois <- vect(xy, crs = "EPSG:4326")
 ls <- as.lines(pois)
 pol <- as.polygons(ls)
 pol
+
+# show it
+plot(pol, col = "dodgerblue", alpha = .5)
+lines(ls, col = "tomato", lw = 3)
+points(pois, cex = 3)
 ```
 
 If you want to cast points to polygons, it is considered best practice to first cast them to lines and then cast these into polygons (as I just did).
 Trying to cast points to polygons directly can introduce errors, if it works at all.
+
+Each geometry has its own set of properties.
+Points have coordinates:
+```{r points-properties}
+geom(pois)[, c("x", "y")] #coordinates of points
+```
+Lines have length:
+```{r lines-properties}
+perim(ls) #length of line
+```
+And polygons have perimeter and area:
+```{r polygons-properties}
+perim(pol) #perimeter of polygon
+expanse(pol, unit = "km") #area of polygon
+```
+Note that lines and polygons also have coordinates, which are the breaking points of the straight lines, defined by the points:
+```{r properties}
+geom(pol)
+```
+
+## Create geometry in R interactively
+
+R _terra_ has a nice feature that allows to draw on a plot and save the resulting geometry in the environment.
+This is achieved using the function `draw()`, which takes as argument the type of geometry you want to draw (_points_, _line_, _polygon_, or _extent_).
+```{r draw, eval=FALSE}
+plot(pol, col = "dodgerblue3", alpha = .5)
+_drawing = draw("lines")
+```
+And then just left-click on the map.
+When you are done, right click and the output will be saved in the variable _drawing_.
+
+![Example of drawing a line using _terra_ draw().](figures/draw-show.gif)
+
+This is very useful when you want to zoom on a region of a map or draw coarse polygons, but don't want to open a more interactive GIS software, such as QGIS.

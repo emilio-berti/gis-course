@@ -1,24 +1,24 @@
 # Rasters
 Because rasters are fundamentally 2D matrices with matadata, it is useful to understand what is a matrix before jumping straight into the topic.
 A 2D matrix $A$ is a mathematical object that can be represented as a grid.
-The elements $a_{ij}$ of the matrix $A$ are called its entries.
-The subscript in $a_{ij}$ indicate the row and column coordinates of the entries.
-For example, $a_{1,1}$ is the element in first row and first column, while $a_{3,4}$ is the element in the third row and fourth column.
+The elements $A_{ij}$ of the matrix $A$ are called its entries.
+The subscript in $A_{ij}$ indicate the row and column coordinates of the entries.
+For example, $A_{1,1}$ is the element in first row and first column, while $A_{3,4}$ is the element in the third row and fourth column.
 
 ## Matrices in R
 R provides a native support for matrices.
-In fact, R was designed to work with matrices, as statistical models (which are in the R's courtyard) can be represented as matrices.
+In fact, R was designed to work with matrices, as most statistical models can be represented as operation on matrices.
 
 ```{r}
 vals <- seq_len(9)
 A <- matrix(vals, byrow = TRUE, nrow = 3, ncol = 3)
+A
 ```
 
 When creating a matrix, there are two import things that are often neglected. 
-First, by specifying `byrow = TRUE`, we make sure that the values contained in `vals` are inserted into the matrix row-wise: $a_{12}$ is the second value of `vals`.
-This argument can be omitted if inserting elements column-wise is preferred; in this case, $a_{12}$ will be the fourth element of `vals`.
-As I find this a bit more confusing, I tend to prefer `byrow = TRUE` and work accordingly.
-I do not want to recommend this choice, but keep in mind the `byrow` argument if your matrix looks weird.
+First, by specifying `byrow = TRUE`, we make sure that the values contained in `vals` are inserted into the matrix row-wise, i.e. $A_{1,1}$ = `vals[1]`, $A_{1,2}$ = `vals[2]`, etc.
+This argument can be omitted if inserting elements column-wise is preferred; in this case, $A_{2,1}$ = `vals[2]`, etc..
+
 Second, at least one of `ncol` or `nrow` should be specified, or the matrix will have only one column (column vectors).
 If you specify only one of the two, R will infer the other dimension.
 You can specify both of them and I invite you to do so for clarity, whenever possible.
@@ -52,6 +52,7 @@ d <- data.frame(
   z = seq_len(100) #values
 )
 r <- rast(d, crs = "EPSG:4326")
+plot(r)
 ```
 
 `rast()` is also used to read rasters from files.
@@ -67,9 +68,10 @@ writeRaster(r, "some-file.tif", overwrite = TRUE, datatype = "INT4U")
 ```
 
 The `overwrite` and `datatype` arguments are optional, but I strongly recommend you to always include them.
-`overwrite = TRUE` simply make sure that, if the raster already exists on disk, it is overwritten; _terra_, by defaults, throw an error if the file exists and `overwrite = FALSE`, which is safer, but tends to be annoying on the long run.
+`overwrite = TRUE` simply make sure that, if the raster already exists on disk, it is overwritten.
+_terra_, by defaults, throw an error if the file exists and `overwrite = FALSE`, which can be annoying when working on servers.
 `datatype` specifies the numeric type of the matrix elements.
-Available types are _signed_ and _u_nsigned _int_egers and _fl_oa_t_ing point numbers.
+Available types are _signed_ and _unsigned_ _integer_ and _float_.
 You also have to specify the number of bytes to use for each entry.
 Available dataype choices are:
 
@@ -84,3 +86,72 @@ Available dataype choices are:
 You can actually store numbers also outside the range of the numeric types, but this will come to the cost of precision, so you should try to avoid going outside ranges.
 This does not mean that you should always save files as _FLT8S_, as this will require more disk space and slow down writing/reading operations.
 For example, if you want to store the elevation at global scale with a precision of one meter, _INT2U_ is the optimal choice, as it is the smallest type that can store the information.
+
+## Raster manipulation
+Rasters can be manipulated in the same way you would do with a matrix.
+For example:
+
+```{r manipulate-1}
+r + 10 #add a constant
+2 * r #multiply by a constant
+r ^ 2 #power
+2 * r + 10 #combined addition and multiplication
+```
+You can also add and multiply rasters together:
+```{r manipulate-2}
+r + r
+r * r
+```
+
+## Raster stacks
+You can also stack rasters to create 3D stacks.
+In _terra_, this is achieved simply by appending the rasters together:
+```{r stack-1}
+s <- c(r, -r / 2)
+s
+plot(s)
+```
+
+Stacks are quite useful because you can call vectorized functions on them, e.g.:
+```{r stack-2}
+plot(mean(s)) #mean
+stdev(s)^2 #variance
+prod(s) #product
+```
+
+## Example: stacks for ecology
+Imagine you sampled the occurrences for 100 species and want to know the number of species detected in each cell.
+The distribution of one species is saved in the file _species-1.tif_ and may look like this:
+```{r, eval=FALSE}
+r <- rast("species-1.tif")
+plot(r)
+```
+
+```{r, echo=FALSE}
+sp <- rast(matrix(sample(c(0, 1), 1e2, replace = TRUE, prob = c(10, 1)), 1e1, 1e1))
+plot(sp)
+```
+
+
+You can load all of them at once:
+```{r, eval = FALSE}
+files <- list.files("data/", pattern = "species-")
+s <- rast(files)
+plot(s[[c(5, 35, 75)]]) #show species 5, 35, and 75
+```
+
+```{r, create-raster, echo=FALSE}
+for (i in seq_len(100)) {
+  sp <- rast(matrix(sample(c(0, 1), 1e2, replace = TRUE, prob = c(10+i, 1)), 1e1, 1e1))
+  writeRaster(sp, paste0("/tmp/species-", i, ".tif"), overwrite = TRUE)
+}
+s <- rast(paste0("/tmp/species-", seq_len(100), ".tif"))
+names(s) <- paste0("species-", seq_len(nlyr(s)))
+plot(s[[c(5, 35, 75)]]) #show species 5, 35, and 75
+```
+
+To get the number of species detected in each cell, you simply need to sum across the stack:
+```{r}
+S <- sum(s)
+plot(S, col = hcl.colors(minmax(S)["max", ], "Zissou 1"))
+```
