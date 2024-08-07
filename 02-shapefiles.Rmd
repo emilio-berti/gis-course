@@ -120,6 +120,6 @@ _drawing = draw("lines")
 And then just left-click on the map.
 When you are done, right click and the output will be saved in the variable _drawing_.
 
-![Example of drawing a line using _terra_ draw().](figures/draw-show.gif)
+<!-- ![Example of drawing a line using _terra_ draw().](figures/draw-show.gif) -->
 
 This is very useful when you want to zoom on a region of a map or draw coarse polygons, but don't want to open a more interactive GIS software, such as QGIS.

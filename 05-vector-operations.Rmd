@@ -50,7 +50,7 @@ Let's calcualte the area of each country and add it to the attribute table of th
 ```{r area}
 A <- expanse(eu, unit = "km")
 eu$area <- A
-eu[, c("CNTR_NAME", "area")]
+eu[, c("NAME_ENGL", "area")]
 ```
 
 We can now make a map with polygons filled with colors representing the county area:
@@ -84,14 +84,14 @@ We can use this together with `terra::intersect()` to get its neighbors:
 ```{r}
 neigh_name <- as.list(rep(NA, nrow(eu)))
 neigh_area <- as.list(rep(NA, nrow(eu)))
-names(neigh_name) <- eu$CNTR_NAME
-names(neigh_area) <- eu$CNTR_NAME
+names(neigh_name) <- eu$NAME_ENGL
+names(neigh_area) <- eu$NAME_ENGL
 
 # iterate over countries
 for (i in seq_len(nrow(eu))) {
   b <- buffer(eu[i], 1e3)
   ans <- intersect(eu[-i], b)
-  neigh_name[[i]] <- ans$CNTR_NAME
+  neigh_name[[i]] <- ans$NAME_ENGL
   neigh_area[[i]] <- ans$area
 }
 ```
@@ -108,9 +108,9 @@ However, note that, in this case, the two approach give the same results:
 ```{r}
 adj <- adjacent(eu)
 neigh_name_correct <- as.list(rep(NA, nrow(eu)))
-names(neigh_name_correct) <- eu$CNTR_NAME
+names(neigh_name_correct) <- eu$NAME_ENGL
 for (i in seq_along(neigh_name_correct)) {
-  neigh_name_correct[[i]] <- eu$CNTR_NAME[adj[adj[, 1] == i, 2]]
+  neigh_name_correct[[i]] <- eu$NAME_ENGL[adj[adj[, 1] == i, 2]]
 }
 
 compare <- data.frame(
