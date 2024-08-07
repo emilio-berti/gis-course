@@ -1,5 +1,5 @@
 #!/bin/bash
 
-source activate gis-course
+source activate pkgdown
 R -e "bookdown::render_book()" > render.log
 

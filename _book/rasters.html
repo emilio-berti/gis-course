@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>3 Rasters | GIS And Remote Sensing For Ecologists</title>
 <meta name="author" content="Emilio Berti">
-<meta name="generator" content="bookdown 0.32 with bs4_book()">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="3 Rasters | GIS And Remote Sensing For Ecologists">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3 Rasters | GIS And Remote Sensing For Ecologists">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_Pro-0.4.5/font.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Source_Sans_Pro-0.4.9/font.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source%20Code%20Pro&amp;display=swap" rel="stylesheet">
-<script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -59,7 +59,7 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rasters" class="section level1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rasters" class="section level1" number="3">
 <h1>
 <span class="header-section-number">3</span> Rasters<a class="anchor" aria-label="anchor" href="#rasters"><i class="fas fa-link"></i></a>
 </h1>
@@ -68,7 +68,7 @@ A 2D matrix <span class="math inline">\(A\)</span> is a mathematical object that
 The elements <span class="math inline">\(A_{ij}\)</span> of the matrix <span class="math inline">\(A\)</span> are called its entries.
 The subscript in <span class="math inline">\(A_{ij}\)</span> indicate the row and column coordinates of the entries.
 For example, <span class="math inline">\(A_{1,1}\)</span> is the element in first row and first column, while <span class="math inline">\(A_{3,4}\)</span> is the element in the third row and fourth column.</p>
-<div id="matrices-in-r" class="section level2">
+<div id="matrices-in-r" class="section level2" number="3.1">
 <h2>
 <span class="header-section-number">3.1</span> Matrices in R<a class="anchor" aria-label="anchor" href="#matrices-in-r"><i class="fas fa-link"></i></a>
 </h2>
@@ -89,7 +89,7 @@ This argument can be omitted if inserting elements column-wise is preferred; in 
 If you specify only one of the two, R will infer the other dimension.
 You can specify both of them and I invite you to do so for clarity, whenever possible.</p>
 </div>
-<div id="rasters-1" class="section level2">
+<div id="rasters-1" class="section level2" number="3.2">
 <h2>
 <span class="header-section-number">3.2</span> Rasters<a class="anchor" aria-label="anchor" href="#rasters-1"><i class="fas fa-link"></i></a>
 </h2>
@@ -102,7 +102,7 @@ The most important metadata define:</p>
 </ul>
 <p>A raster without these three metadata is, in most cases, useless.</p>
 </div>
-<div id="rasters-in-r" class="section level2">
+<div id="rasters-in-r" class="section level2" number="3.3">
 <h2>
 <span class="header-section-number">3.3</span> Rasters in R<a class="anchor" aria-label="anchor" href="#rasters-in-r"><i class="fas fa-link"></i></a>
 </h2>
@@ -159,7 +159,7 @@ Available dataype choices are:</p>
 This does not mean that you should always save files as <em>FLT8S</em>, as this will require more disk space and slow down writing/reading operations.
 For example, if you want to store the elevation at global scale with a precision of one meter, <em>INT2U</em> is the optimal choice, as it is the smallest type that can store the information.</p>
 </div>
-<div id="raster-manipulation" class="section level2">
+<div id="raster-manipulation" class="section level2" number="3.4">
 <h2>
 <span class="header-section-number">3.4</span> Raster manipulation<a class="anchor" aria-label="anchor" href="#raster-manipulation"><i class="fas fa-link"></i></a>
 </h2>
@@ -233,7 +233,7 @@ For example:</p>
 ## min value   :     1 
 ## max value   : 10000</code></pre>
 </div>
-<div id="raster-stacks" class="section level2">
+<div id="raster-stacks" class="section level2" number="3.5">
 <h2>
 <span class="header-section-number">3.5</span> Raster stacks<a class="anchor" aria-label="anchor" href="#raster-stacks"><i class="fas fa-link"></i></a>
 </h2>
@@ -281,7 +281,7 @@ In <em>terra</em>, this is achieved simply by appending the rasters together:</p
 ## min value   : -5e+03 
 ## max value   : -5e-01</code></pre>
 </div>
-<div id="example-stacks-for-ecology" class="section level2">
+<div id="example-stacks-for-ecology" class="section level2" number="3.6">
 <h2>
 <span class="header-section-number">3.6</span> Example: stacks for ecology<a class="anchor" aria-label="anchor" href="#example-stacks-for-ecology"><i class="fas fa-link"></i></a>
 </h2>

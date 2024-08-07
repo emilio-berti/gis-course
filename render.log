@@ -1,7 +1,7 @@
 
-R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics"
-Copyright (C) 2022 The R Foundation for Statistical Computing
-Platform: x86_64-conda-linux-gnu (64-bit)
+R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -18,8 +18,98 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 
 > bookdown::render_book()
-  |                                                        |                                                |   0%  |                                                        |.                                               |   1%                        |                                                        |.                                               |   2% (setup)                |                                                        |..                                              |   3%                        |                                                        |..                                              |   4% (anaximander)          |                                                        |...                                             |   5%                        |                                                        |...                                             |   7% (portolan)             |                                                        |....                                            |   8%                        |                                                        |....                                            |   9% (qgis)                 |                                                        |.....                                           |  10%                        |                                                        |.....                                           |  11% (unnamed-chunk-1)      |                                                        |......                                          |  12%                        |                                                        |......                                          |  13% (unnamed-chunk-2)      |                                                        |.......                                         |  14%                        |                                                        |.......                                         |  15% (unnamed-chunk-3)      |                                                        |........                                        |  16%                        |                                                        |........                                        |  18% (unnamed-chunk-4)      |                                                        |.........                                       |  19%                        |                                                        |.........                                       |  20% (unnamed-chunk-5)      |                                                        |..........                                      |  21%                        |                                                        |...........                                     |  22% (unnamed-chunk-6)      |                                                        |...........                                     |  23%                        |                                                        |............                                    |  24% (unnamed-chunk-7)      |                                                        |............                                    |  25%                        |                                                        |.............                                   |  26% (points-properties)    |                                                        |.............                                   |  27%                        |                                                        |..............                                  |  29% (lines-properties)     |                                                        |..............                                  |  30%                        |                                                        |...............                                 |  31% (polygons-properties)  |                                                        |...............                                 |  32%                        |                                                        |................                                |  33% (properties)           |                                                        |................                                |  34%                        |                                                        |.................                               |  35% (draw)                 |                                                        |.................                               |  36%                        |                                                        |..................                              |  37% (unnamed-chunk-8)      |                                                        |..................                              |  38%                        |                                                        |...................                             |  40% (unnamed-chunk-9)      |                                                        |....................                            |  41%                        |                                                        |....................                            |  42% (unnamed-chunk-10)     |                                                        |.....................                           |  43%                        |                                                        |.....................                           |  44% (unnamed-chunk-11)     |                                                        |......................                          |  45%                        |                                                        |......................                          |  46% (unnamed-chunk-12)     |                                                        |.......................                         |  47%                        |                                                        |.......................                         |  48% (manipulate-1)         |                                                        |........................                        |  49%                        |                                                        |........................                        |  51% (manipulate-2)         |                                                        |.........................                       |  52%                        |                                                        |.........................                       |  53% (stack-1)              |                                                        |..........................                      |  54%                        |                                                        |..........................                      |  55% (stack-2)              |                                                        |...........................                     |  56%                        |                                                        |...........................                     |  57% (unnamed-chunk-13)     |                                                        |............................                    |  58%                        |                                                        |............................                    |  59% (unnamed-chunk-14)     |                                                        |.............................                   |  60%                        |                                                        |..............................                  |  62% (unnamed-chunk-15)     |                                                        |..............................                  |  63%                        |                                                        |...............................                 |  64% (create-raster)        |                                                        |...............................                 |  65%                        |                                                        |................................                |  66% (unnamed-chunk-16)     |                                                        |................................                |  67%                        |                                                        |.................................               |  68% (unnamed-chunk-17)     |                                                        |.................................               |  69%                        |                                                        |..................................              |  70% (unnamed-chunk-18)     |                                                        |..................................              |  71%                        |                                                        |...................................             |  73% (unnamed-chunk-19)     |                                                        |...................................             |  74%                        |                                                        |....................................            |  75% (unnamed-chunk-20)     |                                                        |....................................            |  76%                        |                                                        |.....................................           |  77% (unnamed-chunk-21)     |                                                        |.....................................           |  78%                        |                                                        |......................................          |  79% (unnamed-chunk-22)     |                                                        |.......................................         |  80%                        |                                                        |.......................................         |  81% (unnamed-chunk-23)     |                                                        |........................................        |  82%                        |                                                        |........................................        |  84% (unnamed-chunk-24)     |                                                        |.........................................       |  85%                        |                                                        |.........................................       |  86% (area)                 |                                                        |..........................................      |  87%                        |                                                        |..........................................      |  88% (unnamed-chunk-25)     |                                                        |...........................................     |  89%                        |                                                        |...........................................     |  90% (unnamed-chunk-26)     |                                                        |............................................    |  91%                        |                                                        |............................................    |  92% (unnamed-chunk-27)     |                                                        |.............................................   |  93%                        |                                                        |.............................................   |  95% (unnamed-chunk-28)     |                                                        |..............................................  |  96%                        |                                                        |..............................................  |  97% (unnamed-chunk-29)     |                                                        |............................................... |  98%                        |                                                        |............................................... |  99% (unnamed-chunk-30)     |                                                        |................................................| 100%                                                                                                                                      
-/usr/bin/pandoc +RTS -K512m -RTS _main.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output _main.html --lua-filter /home/eb97ziwi/mambaforge/envs/gis-course/lib/R/library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/eb97ziwi/mambaforge/envs/gis-course/lib/R/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/eb97ziwi/mambaforge/envs/gis-course/lib/R/library/rmarkdown/rmarkdown/lua/latex-div.lua --wrap preserve --standalone --section-divs --template /home/eb97ziwi/mambaforge/envs/gis-course/lib/R/library/bookdown/templates/bs4_book.html --highlight-style pygments --number-sections --mathjax --include-in-header /tmp/RtmpxfVQ4N/rmarkdown-strdaf7181593a.html --filter /usr/bin/pandoc-citeproc 
+1/91                      
+2/91 [setup]              
+3/91                      
+4/91 [anaximander]        
+5/91                      
+6/91 [portolan]           
+7/91                      
+8/91 [qgis]               
+9/91                      
+10/91 [unnamed-chunk-1]    
+11/91                      
+12/91 [unnamed-chunk-2]    
+13/91                      
+14/91 [unnamed-chunk-3]    
+15/91                      
+16/91 [unnamed-chunk-4]    
+17/91                      
+18/91 [unnamed-chunk-5]    
+19/91                      
+20/91 [unnamed-chunk-6]    
+21/91                      
+22/91 [unnamed-chunk-7]    
+23/91                      
+24/91 [points-properties]  
+25/91                      
+26/91 [lines-properties]   
+27/91                      
+28/91 [polygons-properties]
+29/91                      
+30/91 [properties]         
+31/91                      
+32/91 [draw]               
+33/91                      
+34/91 [unnamed-chunk-8]    
+35/91                      
+36/91 [unnamed-chunk-9]    
+37/91                      
+38/91 [unnamed-chunk-10]   
+39/91                      
+40/91 [unnamed-chunk-11]   
+41/91                      
+42/91 [unnamed-chunk-12]   
+43/91                      
+44/91 [manipulate-1]       
+45/91                      
+46/91 [manipulate-2]       
+47/91                      
+48/91 [stack-1]            
+49/91                      
+50/91 [stack-2]            
+51/91                      
+52/91 [unnamed-chunk-13]   
+53/91                      
+54/91 [unnamed-chunk-14]   
+55/91                      
+56/91 [unnamed-chunk-15]   
+57/91                      
+58/91 [create-raster]      
+59/91                      
+60/91 [unnamed-chunk-16]   
+61/91                      
+62/91 [unnamed-chunk-17]   
+63/91                      
+64/91 [unnamed-chunk-18]   
+65/91                      
+66/91 [unnamed-chunk-19]   
+67/91                      
+68/91 [unnamed-chunk-20]   
+69/91                      
+70/91 [unnamed-chunk-21]   
+71/91                      
+72/91 [unnamed-chunk-22]   
+73/91                      
+74/91 [unnamed-chunk-23]   
+75/91                      
+76/91 [unnamed-chunk-24]   
+77/91                      
+78/91 [area]               
+79/91                      
+80/91 [unnamed-chunk-25]   
+81/91                      
+82/91 [unnamed-chunk-26]   
+83/91                      
+84/91 [unnamed-chunk-27]   
+85/91                      
+86/91 [unnamed-chunk-28]   
+87/91                      
+88/91 [unnamed-chunk-29]   
+89/91                      
+90/91 [unnamed-chunk-30]   
+91/91                      
+/home/eb97ziwi/mambaforge/envs/pkgdown/bin/pandoc +RTS -K512m -RTS _main.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output _main.html --lua-filter /home/eb97ziwi/mambaforge/envs/pkgdown/lib/R/library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/eb97ziwi/mambaforge/envs/pkgdown/lib/R/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/eb97ziwi/mambaforge/envs/pkgdown/lib/R/library/rmarkdown/rmarkdown/lua/latex-div.lua --wrap preserve --standalone --section-divs --template /home/eb97ziwi/mambaforge/envs/pkgdown/lib/R/library/bookdown/templates/bs4_book.html --highlight-style pygments --number-sections --mathjax --include-in-header /tmp/Rtmpo3bKva/rmarkdown-strff3f2fbb97c7.html --citeproc 
 [1] "/home/eb97ziwi/gis-course/_book/index.html"
 > 
 > 
