@@ -47,7 +47,7 @@ In `terra`, the function `expanse()` calculate areas.
 If you read the documentation, it also specified that longlat CRS is the most accurate to calculate areas.
 Let's calcualte the area of each country and add it to the attribute table of the vector:
 
-```{r area}
+```{r}
 A <- expanse(eu, unit = "km")
 eu$area <- A
 eu[, c("NAME_ENGL", "area")]
@@ -64,61 +64,5 @@ north()
 sbar(1e3, type = "bar", divs = 4, below = "kilometers", xy = c(-10, 60)) 
 ```
 
-## Buffers and neighbours of a polygon
-
-Our shapefile is a good shapefile, meaning that the people who created it took care that the boundaries of countries did not overlap.
-Indeed, this would be a reason for tension between countries.
-However, we can still trick our way to obtain the neighbors of countries.
-Imagine to enlarge the countries, i.e. to expand their borders by a small amount, let's say 1km.
-This opearation is called buffering:
-
-```{r}
-b <- buffer(eu, 1e5) #100km for visualizing it
-plot(eu, col = "dodgerblue")
-lines(b)
-```
-
-If done on one country only, then this will overlap with its adjacent neighbors (and with non-adjacent ones if they are closer than 1km).
-We can use this together with `terra::intersect()` to get its neighbors:
-
-```{r}
-neigh_name <- as.list(rep(NA, nrow(eu)))
-neigh_area <- as.list(rep(NA, nrow(eu)))
-names(neigh_name) <- eu$NAME_ENGL
-names(neigh_area) <- eu$NAME_ENGL
-
-# iterate over countries
-for (i in seq_len(nrow(eu))) {
-  b <- buffer(eu[i], 1e3)
-  ans <- intersect(eu[-i], b)
-  neigh_name[[i]] <- ans$NAME_ENGL
-  neigh_area[[i]] <- ans$area
-}
-```
-Some warning are thrown telling use that some countries do not have neighbors:
-```{r}
-names(neigh_name)[sapply(neigh_name, length) == 0]
-```
-These are all islands (Cyprus, Ireland, and Malta), so that is correct.
-
-Importantly, `terra` has a special function to get adjanceny polygons, called (surprisingly) `adjacent()`.
-This is the funciton you should normally use; the approach used above is for teaching purposes.
-However, note that, in this case, the two approach give the same results:
-
-```{r}
-adj <- adjacent(eu)
-neigh_name_correct <- as.list(rep(NA, nrow(eu)))
-names(neigh_name_correct) <- eu$NAME_ENGL
-for (i in seq_along(neigh_name_correct)) {
-  neigh_name_correct[[i]] <- eu$NAME_ENGL[adj[adj[, 1] == i, 2]]
-}
-
-compare <- data.frame(
-  buffering = unlist(neigh_name),
-  correct = unlist(neigh_name_correct)
-)
-any(compare[, 1] != compare[, 2])
-head(compare)
-```
 
 The reason they are identical is because there is no country close 1km or less to another and that is also not an adjacent neighbor.

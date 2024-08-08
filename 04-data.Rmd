@@ -1,0 +1,73 @@
+# Overview of the data we will use
+
+There are some operations that are the staple of GIS.
+For example: What is the distance between two features? What is the area of a polygon? What is the value of a raster at specific locations?
+To illustrate this with practical examples, we will use some data that you can find in the `data/` folder in the repo <https://github.com/emilio-berti/gis-course>.
+
+```{bash, eval=FALSE, echo=FALSE}
+if [[ ! -d "data" ]]
+then
+  mkdir data #create data directory
+else
+  echo "data directory already exists"
+fi
+
+cd data #move to data
+
+url="https://gisco-services.ec.europa.eu/distribution/v2/countries/download/ref-countries-2020-10m.shp.zip"
+
+wget $url
+
+# unzip files
+files=$(ls)
+for f in $files
+do
+  unzip $f
+done
+
+unzip CNTR_RG_10M_2020_4326.shp.zip
+
+cd .. #go back to parent directory
+```
+
+```{r, eval=FALSE, echo=FALSE}
+library(terra)
+v <- vect("data/CNTR_RG_10M_2020_4326.shp")
+v <- v[v[["EU_STAT"]] == "T", ]
+e <- ext(-11.91, 38.2, 33.89, 73.03)
+v <- crop(v, e)
+writeVector(v, "EU.shp")
+```
+
+```{bash, eval=FALSE, echo=FALSE}
+cd data
+rm *
+mv ../EU.* .
+mkdir EU
+mv EU.* EU
+cd ..
+```
+
+`data/EU/EU.shp` contains the polygons of the countries in the European Union:
+```{r eu-show}
+eu <- vect("data/EU/EU.shp")
+plot(eu, col = "#001489", border = "white", lw = 2)
+```
+
+`data/ISTAT/Limiti01012024_g/Reg01012024_g/Reg01012024_g_WGS84.shp` contains the polygons of the regions (administrative division below the state) of Italy:
+```{r reg-show}
+reg <- vect("data/ISTAT/Limiti01012024_g/Reg01012024_g/Reg01012024_g_WGS84.shp")
+plot(reg, "DEN_REG", col = hcl.colors(length(reg), "Set 2"))
+```
+
+`data/ISTAT/Limiti01012024_g/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp` contains the polygons of the provinces (administrative division between commune and region) of Italy:
+```{r province-show}
+italy <- vect("data/ISTAT/Limiti01012024_g/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp")
+plot(italy, "DEN_UTS", col = colors()[sample(seq_along(colors()), length(italy))])
+```
+
+`data/wc2.1_10m_bio_1.tif` is the mean annual temperature (averaged across several decades) at 10 minute resolution from WorldClim. I cropped this for  Europe (excluding parts of Scandinavia to save disk space):
+```{r bio1-show}
+bio1 <- rast("data/wc2.1_10m_bio_1.tif")
+plot(bio1, col = hcl.colors(100, "Zissou 1"))
+```

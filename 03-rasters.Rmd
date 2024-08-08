@@ -153,5 +153,5 @@ plot(s[[c(5, 35, 75)]]) #show species 5, 35, and 75
 To get the number of species detected in each cell, you simply need to sum across the stack:
 ```{r}
 S <- sum(s)
-plot(S, col = hcl.colors(minmax(S)["max", ], "Zissou 1"))
+plot(S, col = hcl.colors(minmax(S)["max", ] + 1, "Zissou 1"))
 ```

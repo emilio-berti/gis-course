@@ -1,6 +1,6 @@
-# Shapefiles
+# Vectors
 
-Shapefiles contain geospatial vector data, also called geometries.
+Vectors (or shapefiles) contain geospatial vector data, also called geometries.
 A shapefile has the extension _.shp_ and it is usually accompanied by other files.
 Common supplementary files are:
 
@@ -115,11 +115,11 @@ R _terra_ has a nice feature that allows to draw on a plot and save the resultin
 This is achieved using the function `draw()`, which takes as argument the type of geometry you want to draw (_points_, _line_, _polygon_, or _extent_).
 ```{r draw, eval=FALSE}
 plot(pol, col = "dodgerblue3", alpha = .5)
-_drawing = draw("lines")
+drawing = draw("lines")
 ```
 And then just left-click on the map.
-When you are done, right click and the output will be saved in the variable _drawing_.
+When you are done, right click and the output will be saved in the variable `drawing`.
 
 <!-- ![Example of drawing a line using _terra_ draw().](figures/draw-show.gif) -->
 
-This is very useful when you want to zoom on a region of a map or draw coarse polygons, but don't want to open a more interactive GIS software, such as QGIS.
+This is very useful when you want to zoom on a region of a map or draw coarse polygons but don't want to open a more interactive GIS software, such as QGIS.
