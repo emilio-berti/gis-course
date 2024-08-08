@@ -1,6 +1,0 @@
-#!/bin/bash
-
-source activate gis-course
-R -e "bookdown::render_book()" > render-html.log
-#R -e "bookdown::render_book(output_format = bookdown::pdf_book())" > render-pdf.log
-
