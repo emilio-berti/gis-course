@@ -57,13 +57,19 @@ plot(eu, col = "#001489", border = "white", lw = 2)
 `data/ISTAT/Limiti01012024_g/Reg01012024_g/Reg01012024_g_WGS84.shp` contains the polygons of the regions (administrative division below the state) of Italy:
 ```{r reg-show}
 reg <- vect("data/ISTAT/Limiti01012024_g/Reg01012024_g/Reg01012024_g_WGS84.shp")
-plot(reg, "DEN_REG", col = hcl.colors(length(reg), "Set 2"))
+plot(
+  reg, "DEN_REG",
+  col = hcl.colors(length(reg), "Set 2")
+)
 ```
 
 `data/ISTAT/Limiti01012024_g/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp` contains the polygons of the provinces (administrative division between commune and region) of Italy:
 ```{r province-show}
 italy <- vect("data/ISTAT/Limiti01012024_g/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp")
-plot(italy, "DEN_UTS", col = colors()[sample(seq_along(colors()), length(italy))])
+plot(
+  italy, "DEN_UTS",
+  col = colors()[sample(seq_along(colors()), length(italy))]
+)
 ```
 
 `data/wc2.1_10m_bio_1.tif` is the mean annual temperature (averaged across several decades) at 10 minute resolution from WorldClim. I cropped this for  Europe (excluding parts of Scandinavia to save disk space):

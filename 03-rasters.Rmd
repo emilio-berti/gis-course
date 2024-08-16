@@ -64,7 +64,10 @@ r <- rast("some-file.tif")
 To write rasters to files, the `writeRaster()` function is used.
 
 ```{r, eval=FALSE}
-writeRaster(r, "some-file.tif", overwrite = TRUE, datatype = "INT4U")
+writeRaster(
+  r, "some-file.tif", 
+  overwrite = TRUE, datatype = "INT4U"
+)
 ```
 
 The `overwrite` and `datatype` arguments are optional, but I strongly recommend you to always include them.
@@ -128,7 +131,12 @@ plot(r)
 ```
 
 ```{r, echo=FALSE}
-sp <- rast(matrix(sample(c(0, 1), 1e2, replace = TRUE, prob = c(10, 1)), 1e1, 1e1))
+sp <- rast(
+  matrix(
+    sample(c(0, 1), 1e2, replace = TRUE, prob = c(10, 1)),
+    1e1, 1e1
+  )
+)
 plot(sp)
 ```
 
@@ -142,7 +150,12 @@ plot(s[[c(5, 35, 75)]]) #show species 5, 35, and 75
 
 ```{r, create-raster, echo=FALSE}
 for (i in seq_len(100)) {
-  sp <- rast(matrix(sample(c(0, 1), 1e2, replace = TRUE, prob = c(10+i, 1)), 1e1, 1e1))
+  sp <- rast(
+    matrix(
+      sample(c(0, 1), 1e2, replace = TRUE, prob = c(10+i, 1)),
+      1e1, 1e1
+    )
+  )
   writeRaster(sp, paste0("/tmp/species-", i, ".tif"), overwrite = TRUE)
 }
 s <- rast(paste0("/tmp/species-", seq_len(100), ".tif"))

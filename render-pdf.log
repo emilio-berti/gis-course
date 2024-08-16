@@ -93,37 +93,37 @@ Type 'q()' to quit R.
 73/107                      
 74/107 [bio1-show]          
 75/107                      
-76/107 [centroid-square]    
+76/107 [rasterize]          
 77/107                      
-78/107 [centroid-outside]   
+78/107 [rasterize-field]    
 79/107                      
-80/107 [centroid-eu]        
+80/107 [vectorize]          
 81/107                      
-82/107 [zonal]              
+82/107 [perimiter]          
 83/107                      
-84/107 [unnamed-chunk-20]   
+84/107 [area]               
 85/107                      
-86/107 [unnamed-chunk-21]   
+86/107 [bonus-1]            
 87/107                      
-88/107 [unnamed-chunk-22]   
+88/107 [centroid-square]    
 89/107                      
-90/107 [unnamed-chunk-23]   
+90/107 [centroid-outside]   
 91/107                      
-92/107 [unnamed-chunk-24]   
+92/107 [centroid-eu]        
 93/107                      
-94/107 [area]               
+94/107 [buffer]             
 95/107                      
-96/107 [unnamed-chunk-25]   
+96/107 [unnamed-chunk-20]   
 97/107                      
-98/107 [unnamed-chunk-26]   
+98/107 [unnamed-chunk-21]   
 99/107                      
-100/107 [unnamed-chunk-27]   
+100/107 [unnamed-chunk-22]   
 101/107                      
-102/107 [unnamed-chunk-28]   
+102/107 [zonal]              
 103/107                      
-104/107 [unnamed-chunk-29]   
+104/107 [zonal-2]            
 105/107                      
-106/107 [unnamed-chunk-30]   
+106/107 [unnamed-chunk-23]   
 107/107                      
 /home/squirry/miniforge3/envs/gis-course/bin/pandoc +RTS -K512m -RTS _main.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output _main.tex --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/rmarkdown/rmarkdown/lua/latex-div.lua --embed-resources --standalone --table-of-contents --toc-depth 2 --number-sections --highlight-style tango --pdf-engine pdflatex --variable graphics --wrap preserve --variable tables=yes --standalone -Mhas-frontmatter=false --citeproc 
 [1] "/home/squirry/gis-course/_book/_main.pdf"

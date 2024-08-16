@@ -4,13 +4,13 @@ Humans have always been interested in mapping out the Earth.
 Anaximander was among the first to publish a map of the known world in the 6th century BC.
 
 ```{r anaximander, echo=FALSE, fig.cap="Reconstruction of the map of the known world from Anaximander."}
-knitr::include_graphics("figures/anaximander-map.png")
+knitr::include_graphics("figures/anaximander-map.png", dpi = 300)
 ```
 
 It was not until the "Age of Exploration", where accurate maps could make the difference between riches and starving at sea, that such Tolkien-like style maps became more realistic.
  
 ```{r portolan, echo=FALSE, fig.cap="A *portolan* map from the Age of Discovery."}
-knitr::include_graphics("figures/portolan-chart.png")
+knitr::include_graphics("figures/portolan-chart.png", dpi = 300)
 ```
 
 Jump forward another 400 years and many major technological advancements and we get to the Information Age, where cartographic software started to be developed.
@@ -20,5 +20,5 @@ It may be surprising for an ecologist, but current GIS tools are tightly linked 
 Nevertheless, we will use GIS for the well-being of humanity and stick to biogeographic analyses.
 
 ```{r qgis, echo=FALSE, fig.cap="An example map produced using QGIS, a free GIS software."}
-knitr::include_graphics("figures/qgis.jpg")
+knitr::include_graphics("figures/qgis.jpg", dpi = 300)
 ```

@@ -97,62 +97,6 @@ You can see full list of attributes using <code>names(eu)</code>:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "CNTR_ID"   "NAME_ENGL" "NAME_FREN" "ISO3_CODE" "SVRG_UN"   "CAPT"     
 ##  [7] "EU_STAT"   "EFTA_STAT" "CC_STAT"   "NAME_GERM" "FID"</code></pre>
-</div>
-<div id="plotting-vectors" class="section level2" number="7.2">
-<h2>
-<span class="header-section-number">7.2</span> Plotting vectors<a class="anchor" aria-label="anchor" href="#plotting-vectors"><i class="fas fa-link"></i></a>
-</h2>
-<p>Let’s put it on a map:</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span><span class="op">)</span></span>
-<span><span class="fu">north</span><span class="op">(</span><span class="op">)</span> <span class="co">#show the North</span></span>
-<span><span class="fu">sbar</span><span class="op">(</span><span class="fl">1e3</span>, type <span class="op">=</span> <span class="st">"bar"</span>, divs <span class="op">=</span> <span class="fl">4</span>, below <span class="op">=</span> <span class="st">"kilometers"</span>, xy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="co">#show a scale bar</span></span></code></pre></div>
-<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
-<p>If you are familiar with maps, you may recognize that this is a longitude-latitude projection: the axes represent arc-degrees.
-To be sure, we check the CRS of the vector:</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">crs</span><span class="op">(</span><span class="va">eu</span>, proj <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "+proj=longlat +datum=WGS84 +no_defs"</code></pre>
-<p>As expected, this is a <em>longlat</em> CRS.
-The argument <code>proj = TRUE</code> specifies that we want a PROJ-string output.
-This is more readable than the standard output of <code>terra</code>:</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">crs</span><span class="op">(</span><span class="va">eu</span>, proj <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "GEOGCRS[\"WGS 84\",\n    DATUM[\"World Geodetic System 1984\",\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4326]]"</code></pre>
-<p>For some cases, for instance calculating areas of polygons, <em>longlat</em> CRS are recommended.</p>
-</div>
-<div id="area-extent" class="section level2" number="7.3">
-<h2>
-<span class="header-section-number">7.3</span> Area extent<a class="anchor" aria-label="anchor" href="#area-extent"><i class="fas fa-link"></i></a>
-</h2>
-<p>In <code>terra</code>, the function <code>expanse()</code> calculate areas.
-If you read the documentation, it also specified that longlat CRS is the most accurate to calculate areas.
-Let’s calcualte the area of each country and add it to the attribute table of the vector:</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu">expanse</span><span class="op">(</span><span class="va">eu</span>, unit <span class="op">=</span> <span class="st">"km"</span><span class="op">)</span></span>
-<span><span class="va">eu</span><span class="op">$</span><span class="va">area</span> <span class="op">&lt;-</span> <span class="va">A</span></span>
-<span><span class="va">eu</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"NAME_ENGL"</span>, <span class="st">"area"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
-<pre><code>##  class       : SpatVector 
-##  geometry    : polygons 
-##  dimensions  : 27, 2  (geometries, attributes)
-##  extent      : -10.38743, 34.39352, 34.57181, 70.0864  (xmin, xmax, ymin, ymax)
-##  source      : EU.shp
-##  coord. ref. : lon/lat WGS 84 (EPSG:4326) 
-##  names       : NAME_ENGL      area
-##  type        :     &lt;chr&gt;     &lt;num&gt;
-##  values      :   Austria 8.386e+04
-##                  Belgium  3.07e+04
-##                 Bulgaria 1.111e+05</code></pre>
-<p>We can now make a map with polygons filled with colors representing the county area:</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># a gradient palette with number of colors = countries</span></span>
-<span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"grey80"</span>, <span class="st">"tomato3"</span>, <span class="st">"tomato"</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="va">pal</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">eu</span><span class="op">$</span><span class="va">area</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="co">#arrange colors</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, col <span class="op">=</span> <span class="va">pal</span><span class="op">)</span> <span class="co">#adding a legend to vector maps is not easy and will leave it for another chapter.</span></span>
-<span><span class="fu">north</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">sbar</span><span class="op">(</span><span class="fl">1e3</span>, type <span class="op">=</span> <span class="st">"bar"</span>, divs <span class="op">=</span> <span class="fl">4</span>, below <span class="op">=</span> <span class="st">"kilometers"</span>, xy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">60</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
-<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672"></div>
-<p>The reason they are identical is because there is no country close 1km or less to another and that is also not an adjacent neighbor.</p>
 
 </div>
 </div>
@@ -164,8 +108,6 @@ Let’s calcualte the area of each country and add it to the attribute table of 
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#vector-operations"><span class="header-section-number">7</span> Vector operations</a></li>
 <li><a class="nav-link" href="#loading-vectors"><span class="header-section-number">7.1</span> Loading vectors</a></li>
-<li><a class="nav-link" href="#plotting-vectors"><span class="header-section-number">7.2</span> Plotting vectors</a></li>
-<li><a class="nav-link" href="#area-extent"><span class="header-section-number">7.3</span> Area extent</a></li>
 </ul>
 
       <div class="book-extra">

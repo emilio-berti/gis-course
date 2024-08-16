@@ -5,8 +5,12 @@
 
 ```{r perimiter}
 eu <- vect("data/EU/EU.shp")
-eu[["perimeter"]] <- perim(eu) / 1e3 #in km - assigned as an attribute of vector
-plot(eu, "perimeter", type = "continuous", col = hcl.colors(length(eu), "Dark Mint"))
+eu[["perimeter"]] <- perim(eu) / 1e3 #in km
+plot(
+  eu, "perimeter",
+  type = "continuous", 
+  col = hcl.colors(length(eu), "Dark Mint")
+)
 ```
 
 (Look at Greece with all that islands!)
@@ -16,7 +20,11 @@ plot(eu, "perimeter", type = "continuous", col = hcl.colors(length(eu), "Dark Mi
 
 ```{r area}
 eu[["area"]] <- expanse(eu, unit = "km")
-plot(eu, "area", type = "continuous", col = hcl.colors(length(eu), "Dark Mint"))
+plot(
+  eu, "area",
+  type = "continuous",
+  col = hcl.colors(length(eu), "Dark Mint")
+)
 ```
 
 (Sweden is smaller than what it looks)
@@ -48,7 +56,11 @@ text(
 The centroid is the point defined as the arithmetic mean position of all the points in the surface of the polygon.
 For instance, the centroids of a square polygon it's its center:
 ```{r centroid-square}
-p <- vect(matrix(c(0, 0, 1, 0, 1, 1, 0, 1, 0, 0), byrow = TRUE, ncol = 2))
+p <- vect(
+  matrix(
+    c(0, 0, 1, 0, 1, 1, 0, 1, 0, 0), byrow = TRUE, ncol = 2
+  )
+)
 p <- as.lines(p)
 p <- as.polygons(p)
 centr <- centroids(p)
@@ -94,7 +106,7 @@ neigh <- as.list(rep(NA, length(eu))) #initialize empty list
 names(neigh) <- eu$NAME_ENGL
 adj <- adjacent(eu, pairs = FALSE)
 
-# then a convoluted code to show the number of neighbors per country
+# then a convoluted code to show the number of neighbors
 for (i in seq_along(eu)) {
   ctr <- eu[adj[i, ] == 1, ]
   if(length(ctr) > 0) {
@@ -105,7 +117,10 @@ for (i in seq_along(eu)) {
 }
 eu$neigh <- sapply(neigh, length)
 eu$neigh[sapply(neigh, \(x) all(x == "No neighbours"))] <- 0
-plot(eu, "neigh", col = hcl.colors(max(eu$neigh) + 1, "Dark Mint"))
+plot(
+  eu, "neigh", 
+  col = hcl.colors(max(eu$neigh) + 1, "Dark Mint")
+)
 ```
 
 (Germany truly is the hearth of the EU)

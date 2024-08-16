@@ -20,9 +20,9 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<meta name="description" content='6.1 Perimiter perim() is used to get the perimiter of a vector: eu &lt;- vect("data/EU/EU.shp") eu[["perimeter"]] &lt;- perim(eu) / 1e3 #in km - assigned as an attribute of vector plot(eu, "perimeter",...'>
-<meta property="og:description" content='6.1 Perimiter perim() is used to get the perimiter of a vector: eu &lt;- vect("data/EU/EU.shp") eu[["perimeter"]] &lt;- perim(eu) / 1e3 #in km - assigned as an attribute of vector plot(eu, "perimeter",...'>
-<meta name="twitter:description" content='6.1 Perimiter perim() is used to get the perimiter of a vector: eu &lt;- vect("data/EU/EU.shp") eu[["perimeter"]] &lt;- perim(eu) / 1e3 #in km - assigned as an attribute of vector plot(eu, "perimeter",...'>
+<meta name="description" content='6.1 Perimiter perim() is used to get the perimiter of a vector: eu &lt;- vect("data/EU/EU.shp") eu[["perimeter"]] &lt;- perim(eu) / 1e3 #in km plot(  eu, "perimeter",  type = "continuous",  col =...'>
+<meta property="og:description" content='6.1 Perimiter perim() is used to get the perimiter of a vector: eu &lt;- vect("data/EU/EU.shp") eu[["perimeter"]] &lt;- perim(eu) / 1e3 #in km plot(  eu, "perimeter",  type = "continuous",  col =...'>
+<meta name="twitter:description" content='6.1 Perimiter perim() is used to get the perimiter of a vector: eu &lt;- vect("data/EU/EU.shp") eu[["perimeter"]] &lt;- perim(eu) / 1e3 #in km plot(  eu, "perimeter",  type = "continuous",  col =...'>
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -73,8 +73,12 @@
 <p><code>perim()</code> is used to get the perimiter of a vector:</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span></span>
-<span><span class="va">eu</span><span class="op">[[</span><span class="st">"perimeter"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">perim</span><span class="op">(</span><span class="va">eu</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1e3</span> <span class="co">#in km - assigned as an attribute of vector</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, <span class="st">"perimeter"</span>, type <span class="op">=</span> <span class="st">"continuous"</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="st">"Dark Mint"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">eu</span><span class="op">[[</span><span class="st">"perimeter"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">perim</span><span class="op">(</span><span class="va">eu</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1e3</span> <span class="co">#in km</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">eu</span>, <span class="st">"perimeter"</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"continuous"</span>, </span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="st">"Dark Mint"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/perimiter-1.png" width="672"></div>
 <p>(Look at Greece with all that islands!)</p>
 </div>
@@ -85,7 +89,11 @@
 <p><code>expanse()</code> is used to calculate the area of vectors:</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">eu</span><span class="op">[[</span><span class="st">"area"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">expanse</span><span class="op">(</span><span class="va">eu</span>, unit <span class="op">=</span> <span class="st">"km"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, <span class="st">"area"</span>, type <span class="op">=</span> <span class="st">"continuous"</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="st">"Dark Mint"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">eu</span>, <span class="st">"area"</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"continuous"</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="st">"Dark Mint"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/area-1.png" width="672"></div>
 <p>(Sweden is smaller than what it looks)</p>
 <p>Bonus:</p>
@@ -116,7 +124,11 @@
 <p>The centroid is the point defined as the arithmetic mean position of all the points in the surface of the polygon.
 For instance, the centroids of a square polygon it’s its center:</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span>, ncol <span class="op">=</span> <span class="fl">2</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">as.lines</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">as.polygons</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
 <span><span class="va">centr</span> <span class="op">&lt;-</span> <span class="fu">centroids</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
@@ -167,6 +179,8 @@ I like more the adjacency matrix, therefore:</p>
 <code class="sourceCode R"><span><span class="va">neigh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">as.list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co">#initialize empty list</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">neigh</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">eu</span><span class="op">$</span><span class="va">NAME_ENGL</span></span>
 <span><span class="va">adj</span> <span class="op">&lt;-</span> <span class="fu">adjacent</span><span class="op">(</span><span class="va">eu</span>, pairs <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># then a convoluted code to show the number of neighbors</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ctr</span> <span class="op">&lt;-</span> <span class="va">eu</span><span class="op">[</span><span class="va">adj</span><span class="op">[</span><span class="va">i</span>, <span class="op">]</span> <span class="op">==</span> <span class="fl">1</span>, <span class="op">]</span></span>
 <span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">ctr</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
@@ -177,8 +191,12 @@ I like more the adjacency matrix, therefore:</p>
 <span><span class="op">}</span></span>
 <span><span class="va">eu</span><span class="op">$</span><span class="va">neigh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">neigh</span>, <span class="va">length</span><span class="op">)</span></span>
 <span><span class="va">eu</span><span class="op">$</span><span class="va">neigh</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">neigh</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="st">"No neighbours"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, <span class="st">"neigh"</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">eu</span><span class="op">$</span><span class="va">neigh</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"Dark Mint"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">eu</span>, <span class="st">"neigh"</span>, </span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">eu</span><span class="op">$</span><span class="va">neigh</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"Dark Mint"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<p>(Germany truly is the hearth of the EU)</p>
 
 </div>
 </div>

@@ -139,7 +139,10 @@ You can use as input a matrix.</p>
 <code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="st">"some-file.tif"</span><span class="op">)</span></span></code></pre></div>
 <p>To write rasters to files, the <code>writeRaster()</code> function is used.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">writeRaster</span><span class="op">(</span><span class="va">r</span>, <span class="st">"some-file.tif"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span>, datatype <span class="op">=</span> <span class="st">"INT4U"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">writeRaster</span><span class="op">(</span></span>
+<span>  <span class="va">r</span>, <span class="st">"some-file.tif"</span>, </span>
+<span>  overwrite <span class="op">=</span> <span class="cn">TRUE</span>, datatype <span class="op">=</span> <span class="st">"INT4U"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>The <code>overwrite</code> and <code>datatype</code> arguments are optional, but I strongly recommend you to always include them.
 <code>overwrite = TRUE</code> simply make sure that, if the raster already exists on disk, it is overwritten.
 <em>terra</em>, by defaults, throw an error if the file exists and <code>overwrite = FALSE</code>, which can be annoying when working on servers.

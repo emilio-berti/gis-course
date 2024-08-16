@@ -92,19 +92,26 @@ Trying to cast points to polygons directly can introduce errors, if it works at 
 
 Each geometry has its own set of properties.
 Points have coordinates:
+
 ```{r points-properties}
 geom(pois)[, c("x", "y")] #coordinates of points
 ```
+
 Lines have length:
+
 ```{r lines-properties}
 perim(ls) #length of line
 ```
+
 And polygons have perimeter and area:
+
 ```{r polygons-properties}
 perim(pol) #perimeter of polygon
 expanse(pol, unit = "km") #area of polygon
 ```
+
 Note that lines and polygons also have coordinates, which are the breaking points of the straight lines, defined by the points:
+
 ```{r properties}
 geom(pol)
 ```

@@ -18,124 +18,114 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 
 > bookdown::render_book()
-1/117                      
-2/117 [setup]              
-3/117                      
-4/117 [anaximander]        
-5/117                      
-6/117 [portolan]           
-7/117                      
-8/117 [qgis]               
-9/117                      
-10/117 [unnamed-chunk-1]    
-11/117                      
-12/117 [unnamed-chunk-2]    
-13/117                      
-14/117 [unnamed-chunk-3]    
-15/117                      
-16/117 [unnamed-chunk-4]    
-17/117                      
-18/117 [unnamed-chunk-5]    
-19/117                      
-20/117 [unnamed-chunk-6]    
-21/117                      
-22/117 [unnamed-chunk-7]    
-23/117                      
-24/117 [points-properties]  
-25/117                      
-26/117 [lines-properties]   
-27/117                      
-28/117 [polygons-properties]
-29/117                      
-30/117 [properties]         
-31/117                      
-32/117 [draw]               
-33/117                      
-34/117 [unnamed-chunk-8]    
-35/117                      
-36/117 [unnamed-chunk-9]    
-37/117                      
-38/117 [unnamed-chunk-10]   
-39/117                      
-40/117 [unnamed-chunk-11]   
-41/117                      
-42/117 [unnamed-chunk-12]   
-43/117                      
-44/117 [manipulate-1]       
-45/117                      
-46/117 [manipulate-2]       
-47/117                      
-48/117 [stack-1]            
-49/117                      
-50/117 [stack-2]            
-51/117                      
-52/117 [unnamed-chunk-13]   
-53/117                      
-54/117 [unnamed-chunk-14]   
-55/117                      
-56/117 [unnamed-chunk-15]   
-57/117                      
-58/117 [create-raster]      
-59/117                      
-60/117 [unnamed-chunk-16]   
-61/117                      
-62/117 [unnamed-chunk-17]   
-63/117                      
-64/117 [unnamed-chunk-18]   
-65/117                      
-66/117 [unnamed-chunk-19]   
-67/117                      
-68/117 [eu-show]            
-69/117                      
-70/117 [reg-show]           
-71/117                      
-72/117 [province-show]      
-73/117                      
-74/117 [bio1-show]          
-75/117                      
-76/117 [rasterize]          
-77/117                      
-78/117 [rasterize-field]    
-79/117                      
-80/117 [vectorize]          
-81/117                      
-82/117 [perimiter]          
-83/117                      
-84/117 [area]               
-85/117                      
-86/117 [bonus-1]            
-87/117                      
-88/117 [centroid-square]    
-89/117                      
-90/117 [centroid-outside]   
-91/117                      
-92/117 [centroid-eu]        
-93/117                      
-94/117 [buffer]             
-95/117                      
-96/117 [unnamed-chunk-20]   
-97/117                      
-98/117 [unnamed-chunk-21]   
-99/117                      
-100/117 [unnamed-chunk-22]   
-101/117                      
-102/117 [unnamed-chunk-23]   
-103/117                      
-104/117 [unnamed-chunk-24]   
-105/117                      
-106/117 [unnamed-chunk-25]   
-107/117                      
-108/117 [unnamed-chunk-26]   
-109/117                      
-110/117 [unnamed-chunk-27]   
-111/117                      
-112/117 [zonal]              
-113/117                      
-114/117 [zonal-2]            
-115/117                      
-116/117 [unnamed-chunk-28]   
-117/117                      
-/home/squirry/miniforge3/envs/gis-course/bin/pandoc +RTS -K512m -RTS _main.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output _main.html --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/rmarkdown/rmarkdown/lua/latex-div.lua --wrap preserve --standalone --section-divs --template /home/squirry/miniforge3/envs/gis-course/lib/R/library/bookdown/templates/bs4_book.html --highlight-style pygments --number-sections --mathjax --include-in-header /tmp/RtmpEb8kk4/rmarkdown-str1765869720a6e.html --citeproc 
+1/107                      
+2/107 [setup]              
+3/107                      
+4/107 [anaximander]        
+5/107                      
+6/107 [portolan]           
+7/107                      
+8/107 [qgis]               
+9/107                      
+10/107 [unnamed-chunk-1]    
+11/107                      
+12/107 [unnamed-chunk-2]    
+13/107                      
+14/107 [unnamed-chunk-3]    
+15/107                      
+16/107 [unnamed-chunk-4]    
+17/107                      
+18/107 [unnamed-chunk-5]    
+19/107                      
+20/107 [unnamed-chunk-6]    
+21/107                      
+22/107 [unnamed-chunk-7]    
+23/107                      
+24/107 [points-properties]  
+25/107                      
+26/107 [lines-properties]   
+27/107                      
+28/107 [polygons-properties]
+29/107                      
+30/107 [properties]         
+31/107                      
+32/107 [draw]               
+33/107                      
+34/107 [unnamed-chunk-8]    
+35/107                      
+36/107 [unnamed-chunk-9]    
+37/107                      
+38/107 [unnamed-chunk-10]   
+39/107                      
+40/107 [unnamed-chunk-11]   
+41/107                      
+42/107 [unnamed-chunk-12]   
+43/107                      
+44/107 [manipulate-1]       
+45/107                      
+46/107 [manipulate-2]       
+47/107                      
+48/107 [stack-1]            
+49/107                      
+50/107 [stack-2]            
+51/107                      
+52/107 [unnamed-chunk-13]   
+53/107                      
+54/107 [unnamed-chunk-14]   
+55/107                      
+56/107 [unnamed-chunk-15]   
+57/107                      
+58/107 [create-raster]      
+59/107                      
+60/107 [unnamed-chunk-16]   
+61/107                      
+62/107 [unnamed-chunk-17]   
+63/107                      
+64/107 [unnamed-chunk-18]   
+65/107                      
+66/107 [unnamed-chunk-19]   
+67/107                      
+68/107 [eu-show]            
+69/107                      
+70/107 [reg-show]           
+71/107                      
+72/107 [province-show]      
+73/107                      
+74/107 [bio1-show]          
+75/107                      
+76/107 [rasterize]          
+77/107                      
+78/107 [rasterize-field]    
+79/107                      
+80/107 [vectorize]          
+81/107                      
+82/107 [perimiter]          
+83/107                      
+84/107 [area]               
+85/107                      
+86/107 [bonus-1]            
+87/107                      
+88/107 [centroid-square]    
+89/107                      
+90/107 [centroid-outside]   
+91/107                      
+92/107 [centroid-eu]        
+93/107                      
+94/107 [buffer]             
+95/107                      
+96/107 [unnamed-chunk-20]   
+97/107                      
+98/107 [unnamed-chunk-21]   
+99/107                      
+100/107 [unnamed-chunk-22]   
+101/107                      
+102/107 [zonal]              
+103/107                      
+104/107 [zonal-2]            
+105/107                      
+106/107 [unnamed-chunk-23]   
+107/107                      
+/home/squirry/miniforge3/envs/gis-course/bin/pandoc +RTS -K512m -RTS _main.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output _main.html --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/squirry/miniforge3/envs/gis-course/lib/R/library/rmarkdown/rmarkdown/lua/latex-div.lua --wrap preserve --standalone --section-divs --template /home/squirry/miniforge3/envs/gis-course/lib/R/library/bookdown/templates/bs4_book.html --highlight-style pygments --number-sections --mathjax --include-in-header /tmp/RtmppGuM5i/rmarkdown-str1a53d30ad1895.html --citeproc 
 [1] "/home/squirry/gis-course/_book/index.html"
 > 
 > 
