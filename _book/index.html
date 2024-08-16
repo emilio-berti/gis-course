@@ -45,7 +45,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="active" href="index.html">Preface</a></li>
-<li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
+<li><a class="" href="the-why-of-gis.html">The why of GIS</a></li>
 <li><a class="" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
@@ -66,9 +66,10 @@
 <h1>Preface<a class="anchor" aria-label="anchor" href="#preface"><i class="fas fa-link"></i></a>
 </h1>
 <p>I started learning GIS in 2017 during my PhD.
-As most of the programming I know, I learnt it by myself making many mistakes.
-I still make mistakes, which means I am still learning.
-My aim with this course is to be the guide I did not have when I started learning GIS and that would have saved me some of the mistakes.
+I first approached GIS using ArcGIS, which I hated with all my guts.
+As I prefer typing on terminal rather than clicking on icons, I quickly switched to R.
+I will use the R package <code>terra</code> thorough this course.
+You can replicate most of the content of this course using python, but I will leave that for another time.
 This course is intended for newcomers to GIS; experienced users should definitely look somewhere else (most likely on <a href="https://stackoverflow.com">stackoverflow.com</a>).</p>
 <p>The course is divided into three main parts:</p>
 <ol style="list-style-type: decimal">
@@ -76,18 +77,15 @@ This course is intended for newcomers to GIS; experienced users should definitel
 <li>Fundamentals for GIS analysis.</li>
 <li>GIS analysis with Google Earth Engine.</li>
 </ol>
+<p>In the first part of this course, I will introduce the basic concepts of GIS using R.
+In the second part, I will cover the fundamentals of GIS analysis.
+I will explain the theory behind it and complement it with examples from actual analyses, introducing the most common workflows in R.
+In the third part, I will focus on Google Earth Engine and explain how to move heavy GIS analyses on the cloud.
+This will require a basic understanding of JavaScript.
+It would be great to talk about how to interface with Google Earth Engine using python, but this topic is probably too advanced and will be the focus of another course.</p>
 <div id="software-requirements" class="section level2 unnumbered">
 <h2>Software requirements<a class="anchor" aria-label="anchor" href="#software-requirements"><i class="fas fa-link"></i></a>
 </h2>
-<p>In the first part of this course, I will introduce the basic concepts of GIS using R and Python.
-For this, I will use the <em>terra</em> package for R and the <em>shapely</em> module for Python.
-I will focus more often on R than on python.</p>
-<p>In the second part, I will cover the fundamentals of GIS analysis.
-I will explain the theory behind it and complement it with examples from actual analyses, introducing the most common workflows for R and Python.
-I will use the R package <em>terra</em> and the Python modules <em>shapely</em>, <em>geopandas</em>, <em>fiona</em>, and <em>plotly</em>.</p>
-<p>In the third part, I will focus on Google Earth Engine and explain how to move heavy GIS analyses on the cloud.
-This will require a basic understanding of JavaScript and of Python object-oriented programming, as well as to interface with GEE using the <em>gee</em> Python module.
-This part may seem redundant at first (why should I move my computation on Google servers?), but, as your analyses expand in scale and need to access several databases, GEE shines as a great trade-off between complexity and effectiveness.</p>
 <p>To install all packages and modules used in this book, you can use the <a href="https://docs.conda.io/en/latest">conda</a> environment management system.
 The environment file is at <a href="https://github.com/emilio-berti/gis-course/conda/gis-course.yml">https://github.com/emilio-berti/gis-course/blob/master/conda/gis-course.yml</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">--file</span><span class="op">=</span>gis-course.yml</span></code></pre></div>
@@ -96,7 +94,7 @@ The environment file is at <a href="https://github.com/emilio-berti/gis-course/c
 </div>
   <div class="chapter-nav">
 <div class="empty"></div>
-<div class="next"><a href="a-history-of-gis.html">A history of GIS</a></div>
+<div class="next"><a href="the-why-of-gis.html">The why of GIS</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -118,7 +116,7 @@ The environment file is at <a href="https://github.com/emilio-berti/gis-course/c
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-08.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

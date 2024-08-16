@@ -45,7 +45,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
+<li><a class="" href="the-why-of-gis.html">The why of GIS</a></li>
 <li><a class="" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
 <li><a class="active" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
@@ -92,17 +92,17 @@ The difference between multilines and polygons is that a polygon inscribe an are
 </h2>
 <p>Let’s see an exampled in R using the package <em>terra</em>.
 Remember to load the package if you did not already: <code><a href="https://rspatial.org/">library(terra)</a></code>.
-In <em>terra</em>, all the hustle that came with older GIS software has been removed, and geometries can be simply be created using the <code>vect()</code> function.</p>
+In <em>terra</em>, all the hustle that came with older GIS software has been removed, and geometries can be simply be created using the <code><a href="https://rspatial.github.io/terra/reference/vect.html">vect()</a></code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="va">poi</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="va">xy</span><span class="op">)</span></span>
-<span><span class="fu">geomtype</span><span class="op">(</span><span class="va">poi</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">poi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="va">xy</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/geomtype.html">geomtype</a></span><span class="op">(</span><span class="va">poi</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "points"</code></pre>
 <p>This creates our first geometry, a point at the origin.
 To be meaningful, however, we must assign a coordinate reference system to our geometry.
 This can be done during the initialization itself.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">poi</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="va">xy</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">poi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="va">xy</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
 <span><span class="va">poi</span></span></code></pre></div>
 <pre><code>##  class       : SpatVector 
 ##  geometry    : points 
@@ -114,32 +114,32 @@ In <em>terra</em> this has been made extremely easy.
 Let’s create some points.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="va">pois</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="va">xy</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
-<span><span class="fu">geomtype</span><span class="op">(</span><span class="va">pois</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">pois</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="va">xy</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/geomtype.html">geomtype</a></span><span class="op">(</span><span class="va">pois</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "points"</code></pre>
-<p>And cast them to lines using <code>as.lines()</code>.</p>
+<p>And cast them to lines using <code><a href="https://rspatial.github.io/terra/reference/as.lines.html">as.lines()</a></code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ls</span> <span class="op">&lt;-</span> <span class="fu">as.lines</span><span class="op">(</span><span class="va">pois</span><span class="op">)</span></span>
-<span><span class="fu">geomtype</span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.lines.html">as.lines</a></span><span class="op">(</span><span class="va">pois</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/geomtype.html">geomtype</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "lines"</code></pre>
 <p>We may want to cast this to polygons, notice however that these lines do not inscribe an area of space, i.e. they are not “closed”.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">pois</span>, cex <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">points</a></span><span class="op">(</span><span class="va">pois</span>, cex <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 <p>Trying to cast these lines as polygons, will return an empty geometry.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pol</span> <span class="op">=</span> <span class="fu">as.polygons</span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span>
-<span><span class="fu">geomtype</span><span class="op">(</span><span class="va">pol</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">pol</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/geomtype.html">geomtype</a></span><span class="op">(</span><span class="va">pol</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "none"</code></pre>
 <p>To cast lines to polygons, two points must be identical.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">xy</span>, <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="co">#add bottom-right point</span></span>
 <span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">xy</span>, <span class="va">xy</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span> <span class="co">#add again first point</span></span>
-<span><span class="va">pois</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="va">xy</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
-<span><span class="va">ls</span> <span class="op">&lt;-</span> <span class="fu">as.lines</span><span class="op">(</span><span class="va">pois</span><span class="op">)</span></span>
-<span><span class="va">pol</span> <span class="op">&lt;-</span> <span class="fu">as.polygons</span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span>
+<span><span class="va">pois</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="va">xy</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
+<span><span class="va">ls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.lines.html">as.lines</a></span><span class="op">(</span><span class="va">pois</span><span class="op">)</span></span>
+<span><span class="va">pol</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span></span>
 <span><span class="va">pol</span></span></code></pre></div>
 <pre><code>##  class       : SpatVector 
 ##  geometry    : polygons 
@@ -148,16 +148,16 @@ Let’s create some points.</p>
 ##  coord. ref. : lon/lat WGS 84 (EPSG:4326)</code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># show it</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pol</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">ls</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, lw <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">pois</span>, cex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">pol</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">lines</a></span><span class="op">(</span><span class="va">ls</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, lw <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">points</a></span><span class="op">(</span><span class="va">pois</span>, cex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
 <p>If you want to cast points to polygons, it is considered best practice to first cast them to lines and then cast these into polygons (as I just did).
 Trying to cast points to polygons directly can introduce errors, if it works at all.</p>
 <p>Each geometry has its own set of properties.
 Points have coordinates:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">geom</span><span class="op">(</span><span class="va">pois</span><span class="op">)</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="co">#coordinates of points</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/geometry.html">geom</a></span><span class="op">(</span><span class="va">pois</span><span class="op">)</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span> <span class="co">#coordinates of points</span></span></code></pre></div>
 <pre><code>##      x  y
 ## [1,] 1  6
 ## [2,] 2  7
@@ -168,18 +168,18 @@ Points have coordinates:</p>
 ## [7,] 1  6</code></pre>
 <p>Lines have length:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">perim</span><span class="op">(</span><span class="va">ls</span><span class="op">)</span> <span class="co">#length of line</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/perim.html">perim</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span> <span class="co">#length of line</span></span></code></pre></div>
 <pre><code>## [1] 1509805</code></pre>
 <p>And polygons have perimeter and area:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">perim</span><span class="op">(</span><span class="va">pol</span><span class="op">)</span> <span class="co">#perimeter of polygon</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/perim.html">perim</a></span><span class="op">(</span><span class="va">pol</span><span class="op">)</span> <span class="co">#perimeter of polygon</span></span></code></pre></div>
 <pre><code>## [1] 1509805</code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">expanse</span><span class="op">(</span><span class="va">pol</span>, unit <span class="op">=</span> <span class="st">"km"</span><span class="op">)</span> <span class="co">#area of polygon</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/expanse.html">expanse</a></span><span class="op">(</span><span class="va">pol</span>, unit <span class="op">=</span> <span class="st">"km"</span><span class="op">)</span> <span class="co">#area of polygon</span></span></code></pre></div>
 <pre><code>## [1] 97586.03</code></pre>
 <p>Note that lines and polygons also have coordinates, which are the breaking points of the straight lines, defined by the points:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">geom</span><span class="op">(</span><span class="va">pol</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/geometry.html">geom</a></span><span class="op">(</span><span class="va">pol</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##      geom part x  y hole
 ## [1,]    1    1 1  6    0
 ## [2,]    1    1 2  7    0
@@ -194,10 +194,10 @@ Points have coordinates:</p>
 <span class="header-section-number">2.2</span> Create geometry in R interactively<a class="anchor" aria-label="anchor" href="#create-geometry-in-r-interactively"><i class="fas fa-link"></i></a>
 </h2>
 <p>R <em>terra</em> has a nice feature that allows to draw on a plot and save the resulting geometry in the environment.
-This is achieved using the function <code>draw()</code>, which takes as argument the type of geometry you want to draw (<em>points</em>, <em>line</em>, <em>polygon</em>, or <em>extent</em>).</p>
+This is achieved using the function <code><a href="https://rspatial.github.io/terra/reference/draw.html">draw()</a></code>, which takes as argument the type of geometry you want to draw (<em>points</em>, <em>line</em>, <em>polygon</em>, or <em>extent</em>).</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pol</span>, col <span class="op">=</span> <span class="st">"dodgerblue3"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
-<span><span class="va">drawing</span> <span class="op">=</span> <span class="fu">draw</span><span class="op">(</span><span class="st">"lines"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">pol</span>, col <span class="op">=</span> <span class="st">"dodgerblue3"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
+<span><span class="va">drawing</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/draw.html">draw</a></span><span class="op">(</span><span class="st">"lines"</span><span class="op">)</span></span></code></pre></div>
 <p>And then just left-click on the map.
 When you are done, right click and the output will be saved in the variable <code>drawing</code>.</p>
 <!-- ![Example of drawing a line using _terra_ draw().](figures/draw-show.gif) -->
@@ -230,7 +230,7 @@ When you are done, right click and the output will be saved in the variable <cod
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-08.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

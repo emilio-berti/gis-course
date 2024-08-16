@@ -45,7 +45,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
+<li><a class="" href="the-why-of-gis.html">The why of GIS</a></li>
 <li><a class="" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
@@ -69,41 +69,41 @@
 <p>In <em>terra</em>, a vector can be converted to a raster by using <code>rasterize(x, y)</code>,
 where <code>x</code> is the vector to convert to a raster and <code>y</code> is a template raster from which the metadata is re-used for <code>x</code>:</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bio1</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="st">"data/wc2.1_10m_bio_1.tif"</span><span class="op">)</span> <span class="co">#load raster template</span></span>
-<span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span> <span class="co">#load zone layer</span></span>
-<span><span class="va">r_eu</span> <span class="op">&lt;-</span> <span class="fu">rasterize</span><span class="op">(</span><span class="va">eu</span>, <span class="va">bio1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">r_eu</span>, col <span class="op">=</span> <span class="st">"#001489"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bio1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/wc2.1_10m_bio_1.tif"</span><span class="op">)</span> <span class="co">#load raster template</span></span>
+<span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span> <span class="co">#load zone layer</span></span>
+<span><span class="va">r_eu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rasterize.html">rasterize</a></span><span class="op">(</span><span class="va">eu</span>, <span class="va">bio1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">r_eu</span>, col <span class="op">=</span> <span class="st">"#001489"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/rasterize-1.png" width="672"></div>
-<p><code>rasterize()</code> can also take the optional argument <code>field</code>, which is used to assign to the cells values:</p>
+<p><code><a href="https://rspatial.github.io/terra/reference/rasterize.html">rasterize()</a></code> can also take the optional argument <code>field</code>, which is used to assign to the cells values:</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">r_eu</span> <span class="op">&lt;-</span> <span class="fu">rasterize</span><span class="op">(</span><span class="va">eu</span>, <span class="va">bio1</span>, field <span class="op">=</span> <span class="st">"NAME_ENGL"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">r_eu</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="st">"Dynamic"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">r_eu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rasterize.html">rasterize</a></span><span class="op">(</span><span class="va">eu</span>, <span class="va">bio1</span>, field <span class="op">=</span> <span class="st">"NAME_ENGL"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">r_eu</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="st">"Dynamic"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">lines</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/rasterize-field-1.png" width="672"></div>
 <div id="covert-a-raster-to-a-vector" class="section level2" number="5.1">
 <h2>
 <span class="header-section-number">5.1</span> Covert a raster to a vector<a class="anchor" aria-label="anchor" href="#covert-a-raster-to-a-vector"><i class="fas fa-link"></i></a>
 </h2>
-<p><code>as.polygons()</code> can be used to convert a raster into a vector.
+<p><code><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons()</a></code> can be used to convert a raster into a vector.
 By default, the new polygon will be dissolved, i.e. the vector will have only one geometry for each value of the raster; this can be turned off by specifying <code>dissolve = FALSE</code>, but usually you want them dissolved.
-Moreover, the default behavior of <code>as.polygons()</code> is to round rasters that have many different values, to avoid creating too many polygons; this can be turned off by specifying <code>round = FALSE</code>.
+Moreover, the default behavior of <code><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons()</a></code> is to round rasters that have many different values, to avoid creating too many polygons; this can be turned off by specifying <code>round = FALSE</code>.
 Let’s have a look at some of these options:</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#default is round = TRUE an dissolve = TRUE</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu">as.polygons</span><span class="op">(</span><span class="va">bio1</span>, round <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">bio1</span>, round <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 40477</code></pre>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu">as.polygons</span><span class="op">(</span><span class="va">bio1</span>, dissolve <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">bio1</span>, dissolve <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 40856</code></pre>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu">as.polygons</span><span class="op">(</span><span class="va">bio1</span>, round <span class="op">=</span> <span class="cn">FALSE</span>, dissolve <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">bio1</span>, round <span class="op">=</span> <span class="cn">FALSE</span>, dissolve <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 40856</code></pre>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">v_bio1</span> <span class="op">&lt;-</span> <span class="fu">as.polygons</span><span class="op">(</span><span class="va">bio1</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="va">v_bio1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">bio1</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">v_bio1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 30</code></pre>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">v_bio1</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">v_bio1</span><span class="op">)</span>, <span class="st">"Zissou 1"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">v_bio1</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">v_bio1</span><span class="op">)</span>, <span class="st">"Zissou 1"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/vectorize-1.png" width="672"></div>
 
 </div>
@@ -132,7 +132,7 @@ Let’s have a look at some of these options:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-08.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -45,7 +45,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
+<li><a class="" href="the-why-of-gis.html">The why of GIS</a></li>
 <li><a class="" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="active" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
@@ -110,10 +110,10 @@ The most important metadata define:</p>
 <span class="header-section-number">3.3</span> Rasters in R<a class="anchor" aria-label="anchor" href="#rasters-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>In R, <em>terra</em> provides all you need to work with rasters.
-To create a raster, you can use the <code>rast()</code> function.
+To create a raster, you can use the <code><a href="https://rspatial.github.io/terra/reference/rast.html">rast()</a></code> function.
 You can use as input a matrix.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="va">A</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="va">A</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
 <span><span class="va">r</span></span></code></pre></div>
 <pre><code>## class       : SpatRaster 
 ## dimensions  : 3, 3, 1  (nrow, ncol, nlyr)
@@ -131,15 +131,15 @@ You can use as input a matrix.</p>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, <span class="co">#y coord</span></span>
 <span>  z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span> <span class="co">#values</span></span>
 <span><span class="op">)</span></span>
-<span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="va">d</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
-<p><code>rast()</code> is also used to read rasters from files.</p>
+<span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="va">d</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<p><code><a href="https://rspatial.github.io/terra/reference/rast.html">rast()</a></code> is also used to read rasters from files.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="st">"some-file.tif"</span><span class="op">)</span></span></code></pre></div>
-<p>To write rasters to files, the <code>writeRaster()</code> function is used.</p>
+<code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"some-file.tif"</span><span class="op">)</span></span></code></pre></div>
+<p>To write rasters to files, the <code><a href="https://rspatial.github.io/terra/reference/writeRaster.html">writeRaster()</a></code> function is used.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">writeRaster</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/writeRaster.html">writeRaster</a></span><span class="op">(</span></span>
 <span>  <span class="va">r</span>, <span class="st">"some-file.tif"</span>, </span>
 <span>  overwrite <span class="op">=</span> <span class="cn">TRUE</span>, datatype <span class="op">=</span> <span class="st">"INT4U"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -258,14 +258,14 @@ In <em>terra</em>, this is achieved simply by appending the rasters together:</p
 ## min values  :   1, -50.0 
 ## max values  : 100,  -0.5</code></pre>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/stack-1-1.png" width="672"></div>
 <p>Stacks are quite useful because you can call vectorized functions on them, e.g.:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span><span class="op">)</span> <span class="co">#mean</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">mean</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span><span class="op">)</span> <span class="co">#mean</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/stack-2-1.png" width="672"></div>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">stdev</span><span class="op">(</span><span class="va">s</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="co">#variance</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">stdev</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="co">#variance</span></span></code></pre></div>
 <pre><code>## class       : SpatRaster 
 ## dimensions  : 10, 10, 1  (nrow, ncol, nlyr)
 ## resolution  : 1, 1  (x, y)
@@ -294,20 +294,20 @@ In <em>terra</em>, this is achieved simply by appending the rasters together:</p
 <p>Imagine you sampled the occurrences for 100 species and want to know the number of species detected in each cell.
 The distribution of one species is saved in the file <em>species-1.tif</em> and may look like this:</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="st">"species-1.tif"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"species-1.tif"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>You can load all of them at once:</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"data/"</span>, pattern <span class="op">=</span> <span class="st">"species-"</span><span class="op">)</span></span>
-<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">s</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">35</span>, <span class="fl">75</span><span class="op">)</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co">#show species 5, 35, and 75</span></span></code></pre></div>
+<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">s</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">35</span>, <span class="fl">75</span><span class="op">)</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co">#show species 5, 35, and 75</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/create-raster-1.png" width="672"></div>
 <p>To get the number of species detected in each cell, you simply need to sum across the stack:</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">S</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu">minmax</span><span class="op">(</span><span class="va">S</span><span class="op">)</span><span class="op">[</span><span class="st">"max"</span>, <span class="op">]</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"Zissou 1"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">S</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/minmax.html">minmax</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span><span class="op">[</span><span class="st">"max"</span>, <span class="op">]</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"Zissou 1"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
 
 </div>
 </div>
@@ -340,7 +340,7 @@ The distribution of one species is saved in the file <em>species-1.tif</em> and 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-08.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

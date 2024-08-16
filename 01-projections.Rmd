@@ -1,20 +1,77 @@
 # Projections
 
 A map projection is a 2D representation of the Earth surface.
-There are several type of projections, each approximating Earth surface in different ways.
-Importantly, each spatial data must have an associated coordinate reference system (CRS), which defines how the 2D map and the Earth surface are related.
-In GIS courses, CRS is usually only briefly discussed or not talked at all.
-However, CRS is quite a complicated topic and one that can introduce many errors in your analysis:
-if you choose the wrong CRS, then your calculations can be extremely biased.
+Technically, a projection is a set of transformations to represent the surface of the Earth on a plane.
 
-I will give only a brief introduction to CRS for two reasons:
+```{r, echo=FALSE, eval=FALSE}
+reset
 
-  1. They are a very complex topic and going into details takes a very long time.
-  2. Honestly, I am still figuring out some of the most obscure details of some CRS and I do not want to say incorrect things.
+set terminal pngcairo size 350,262 enhanced font 'Verdana,10'
+set output 'figures/world3d.png'
 
-## Geographic vs Projectes CRS
+# color definitions
+set border lw 1.5
 
-A geographic CRS is one where locations of points are described by longitude and latitude, i.e. the angle between the Prime meridian (an almost mythological creature) and the location and the angle between the Equator and the location, respectively.
+unset key
+unset border 
+set tics scale 0
+set lmargin screen 0
+set bmargin screen 0 
+set rmargin screen 1
+set tmargin screen 1 
+set format ''
+
+set mapping spherical
+set angles degrees
+set hidden3d
+set xyplane at -1
+set view 56,81
+
+set parametric
+set isosamples 25
+set urange[0:360]
+set vrange[-90:90]
+
+r = 0.99
+splot r*cos(v)*cos(u),r*cos(v)*sin(u),r*sin(v) \
+  with lines lc rgb '#c0c0c0' lt 2 lw 1, \
+  'data/world.dat' with lines lc rgb '#000000' lt 1 lw 2
+```
+
+```{r world-sphere, echo=FALSE, fig.align="center", out.width="6cm", fig.cap="The Earth as a sphere. Black lines show the coastline and grey lines the meridians (longitude) and paralleles (latitude). If you walk along a parallel or a meridian, you will be going on straight line, but on a sphere they are curved."}
+knitr::include_graphics("figures/world3d.png", dpi = 300)
+```
+
+```{r, echo=FALSE, eval=FALSE}
+reset
+
+set terminal pngcairo size 350,262 enhanced font 'Verdana,10'
+set output 'figures/world2d.png'
+
+set border lw 1.5
+set style line 1 lc rgb 'black' lt 1 lw 2
+
+unset key
+set format ''
+set tics scale 0
+set grid
+
+plot 'data/world.dat' with lines lc rgb '#000000' lt 1 lw 2
+```
+
+
+```{r world-plane, echo=FALSE, fig.align="center", out.width="6cm", fig.cap="The Earth on a plane. Black lines show the coastline and grey lines the meridians (longitude) and paralleles (latitude). You can see something has been distorted."}
+knitr::include_graphics("figures/world2d.png", dpi = 300)
+```
+
+There are several type of projections, each approximating the surface of the Earth in different ways.
+Each spatial data must have an associated coordinate reference system (CRS), which defines how the 2D map and the Earth surface are related.
+In GIS courses, CRS is usually only briefly discussed.
+However, choosing an inappropriate CRS for your analysis can introduce many errors.
+
+## Geographic vs Projected CRS
+
+A geographic CRS is one where locations of points are described by longitude and latitude, i.e. the angle between the Prime meridian (oh, the mythological creature) and the location and the angle between the Equator and the location, respectively.
 The most used geographic CRS is WGS84 (EPSG:4326).
 
 A projected CRS is a system to represent the 3D Earth surface on a plane.

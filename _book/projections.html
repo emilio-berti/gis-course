@@ -20,9 +20,9 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<meta name="description" content="A map projection is a 2D representation of the Earth surface. There are several type of projections, each approximating Earth surface in different ways. Importantly, each spatial data must have an...">
-<meta property="og:description" content="A map projection is a 2D representation of the Earth surface. There are several type of projections, each approximating Earth surface in different ways. Importantly, each spatial data must have an...">
-<meta name="twitter:description" content="A map projection is a 2D representation of the Earth surface. There are several type of projections, each approximating Earth surface in different ways. Importantly, each spatial data must have an...">
+<meta name="description" content="A map projection is a 2D representation of the Earth surface. Techincally, a projection is a set of transformations to represent the surface of the Earth on a plane.  Figure 1.1: The Earth as a...">
+<meta property="og:description" content="A map projection is a 2D representation of the Earth surface. Techincally, a projection is a set of transformations to represent the surface of the Earth on a plane.  Figure 1.1: The Earth as a...">
+<meta name="twitter:description" content="A map projection is a 2D representation of the Earth surface. Techincally, a projection is a set of transformations to represent the surface of the Earth on a plane.  Figure 1.1: The Earth as a...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -45,7 +45,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
+<li><a class="" href="the-why-of-gis.html">The why of GIS</a></li>
 <li><a class="active" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
@@ -67,7 +67,14 @@
 <span class="header-section-number">1</span> Projections<a class="anchor" aria-label="anchor" href="#projections"><i class="fas fa-link"></i></a>
 </h1>
 <p>A map projection is a 2D representation of the Earth surface.
-There are several type of projections, each approximating Earth surface in different ways.
+Techincally, a projection is a set of transformations to represent the surface of the Earth on a plane.</p>
+<div class="figure">
+<span style="display:block;" id="fig:world-sphere"></span>
+<img src="figures/world3d.png" alt="The Earth as a sphere." width="112"><p class="caption">
+Figure 1.1: The Earth as a sphere.
+</p>
+</div>
+<p>There are several type of projections, each approximating Earth surface in different ways.
 Importantly, each spatial data must have an associated coordinate reference system (CRS), which defines how the 2D map and the Earth surface are related.
 In GIS courses, CRS is usually only briefly discussed or not talked at all.
 However, CRS is quite a complicated topic and one that can introduce many errors in your analysis:
@@ -103,7 +110,7 @@ Wikipedia also has a nice list with the property of each projection: <a href="ht
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="a-history-of-gis.html">A history of GIS</a></div>
+<div class="prev"><a href="the-why-of-gis.html">The why of GIS</a></div>
 <div class="next"><a href="vectors.html"><span class="header-section-number">2</span> Vectors</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
@@ -126,7 +133,7 @@ Wikipedia also has a nice list with the property of each projection: <a href="ht
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-08.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

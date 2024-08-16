@@ -45,7 +45,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
+<li><a class="" href="the-why-of-gis.html">The why of GIS</a></li>
 <li><a class="" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
@@ -70,11 +70,11 @@
 <h2>
 <span class="header-section-number">6.1</span> Perimiter<a class="anchor" aria-label="anchor" href="#perimiter"><i class="fas fa-link"></i></a>
 </h2>
-<p><code>perim()</code> is used to get the perimiter of a vector:</p>
+<p><code><a href="https://rspatial.github.io/terra/reference/perim.html">perim()</a></code> is used to get the perimiter of a vector:</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span></span>
-<span><span class="va">eu</span><span class="op">[[</span><span class="st">"perimeter"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">perim</span><span class="op">(</span><span class="va">eu</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1e3</span> <span class="co">#in km</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span></span>
+<span><span class="va">eu</span><span class="op">[[</span><span class="st">"perimeter"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/perim.html">perim</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1e3</span> <span class="co">#in km</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">eu</span>, <span class="st">"perimeter"</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"continuous"</span>, </span>
 <span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="st">"Dark Mint"</span><span class="op">)</span></span>
@@ -86,10 +86,10 @@
 <h2>
 <span class="header-section-number">6.2</span> Area<a class="anchor" aria-label="anchor" href="#area"><i class="fas fa-link"></i></a>
 </h2>
-<p><code>expanse()</code> is used to calculate the area of vectors:</p>
+<p><code><a href="https://rspatial.github.io/terra/reference/expanse.html">expanse()</a></code> is used to calculate the area of vectors:</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">eu</span><span class="op">[[</span><span class="st">"area"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">expanse</span><span class="op">(</span><span class="va">eu</span>, unit <span class="op">=</span> <span class="st">"km"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">eu</span><span class="op">[[</span><span class="st">"area"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/expanse.html">expanse</a></span><span class="op">(</span><span class="va">eu</span>, unit <span class="op">=</span> <span class="st">"km"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">eu</span>, <span class="st">"area"</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"continuous"</span>,</span>
 <span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="st">"Dark Mint"</span><span class="op">)</span></span>
@@ -98,18 +98,18 @@
 <p>(Sweden is smaller than what it looks)</p>
 <p>Bonus:</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mapped_islands</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu">disagg</span><span class="op">(</span><span class="va">eu</span><span class="op">)</span><span class="op">$</span><span class="va">NAME_ENGL</span><span class="op">)</span><span class="op">[</span><span class="va">eu</span><span class="op">$</span><span class="va">NAME_ENGL</span><span class="op">]</span> <span class="co">#some magic</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">mapped_islands</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/disaggregate.html">disagg</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span><span class="op">$</span><span class="va">NAME_ENGL</span><span class="op">)</span><span class="op">[</span><span class="va">eu</span><span class="op">$</span><span class="va">NAME_ENGL</span><span class="op">]</span> <span class="co">#some magic</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span>, <span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">perimeter</span>, <span class="va">area</span>, </span>
 <span>  pch <span class="op">=</span> <span class="fl">20</span>, cex <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  col <span class="op">=</span> <span class="st">"dodgerblue3"</span></span>
 <span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/text.html">text</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="va">eu</span><span class="op">$</span><span class="va">perimeter</span>, y <span class="op">=</span> <span class="va">eu</span><span class="op">$</span><span class="va">area</span>,</span>
 <span>  labels <span class="op">=</span> <span class="va">eu</span><span class="op">$</span><span class="va">NAME_ENGL</span>, </span>
 <span>  adj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/text.html">text</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="va">eu</span><span class="op">$</span><span class="va">perimeter</span>, y <span class="op">=</span> <span class="va">eu</span><span class="op">$</span><span class="va">area</span>,</span>
 <span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">mapped_islands</span>, <span class="st">"islands"</span><span class="op">)</span>,</span>
 <span>  adj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">2</span><span class="op">)</span>,</span>
@@ -124,35 +124,35 @@
 <p>The centroid is the point defined as the arithmetic mean position of all the points in the surface of the polygon.
 For instance, the centroids of a square polygon it’s its center:</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span>, ncol <span class="op">=</span> <span class="fl">2</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">as.lines</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">as.polygons</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span><span class="va">centr</span> <span class="op">&lt;-</span> <span class="fu">centroids</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">p</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">centr</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, cex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.lines.html">as.lines</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="va">centr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/centroids.html">centroids</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">p</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">points</a></span><span class="op">(</span><span class="va">centr</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, cex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure">
 <img src="_main_files/figure-html/centroid-square-1.png" width="672">
 But the centroid of a complex polygon may not even be inside it:</div>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0.9</span>, <span class="fl">0.1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">as.lines</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">as.polygons</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span><span class="va">centr</span> <span class="op">&lt;-</span> <span class="fu">centroids</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">p</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">centr</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, cex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0.9</span>, <span class="fl">0.1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.lines.html">as.lines</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="va">centr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/centroids.html">centroids</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">p</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">points</a></span><span class="op">(</span><span class="va">centr</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, cex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure">
 <img src="_main_files/figure-html/centroid-outside-1.png" width="672">
 Neverthelss, centroids can someitmes be useful to get an idea of a process at large spatial scales.
 For instance, the latitude of the centroids of the countries in the EU is somewhat their average latitude:</div>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">eu_centr</span> <span class="op">&lt;-</span> <span class="fu">centroids</span><span class="op">(</span><span class="va">eu</span><span class="op">)</span></span>
-<span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, col <span class="op">=</span> <span class="st">"#001489"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lw <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">eu_centr</span>, col <span class="op">=</span> <span class="st">"#FFDD00"</span>, cex <span class="op">=</span> <span class="fl">2</span>, pch <span class="op">=</span> <span class="fl">3</span>, lw <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">eu_centr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/centroids.html">centroids</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span></span>
+<span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, col <span class="op">=</span> <span class="st">"#001489"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lw <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">points</a></span><span class="op">(</span><span class="va">eu_centr</span>, col <span class="op">=</span> <span class="st">"#FFDD00"</span>, cex <span class="op">=</span> <span class="fl">2</span>, pch <span class="op">=</span> <span class="fl">3</span>, lw <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/centroid-eu-1.png" width="672"></div>
 </div>
 <div id="buffer" class="section level2" number="6.4">
@@ -163,39 +163,39 @@ For instance, the latitude of the centroids of the countries in the EU is somewh
 Buffering is achieved in <em>terra</em> using <code>buffer(x, width)</code>.
 It is easier to see it than to explain it.</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu">buffer</span><span class="op">(</span><span class="va">eu</span>, <span class="fl">1e5</span><span class="op">)</span> <span class="co">#100km for visualizing it</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, col <span class="op">=</span> <span class="st">"#001489"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">b</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, lw <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/buffer.html">buffer</a></span><span class="op">(</span><span class="va">eu</span>, <span class="fl">1e5</span><span class="op">)</span> <span class="co">#100km for visualizing it</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">eu</span>, col <span class="op">=</span> <span class="st">"#001489"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">lines</a></span><span class="op">(</span><span class="va">b</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, lw <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/buffer-1.png" width="672"></div>
 </div>
 <div id="neighbors-of-polygons" class="section level2" number="6.5">
 <h2>
 <span class="header-section-number">6.5</span> Neighbors of polygons<a class="anchor" aria-label="anchor" href="#neighbors-of-polygons"><i class="fas fa-link"></i></a>
 </h2>
-<p>In <em>terra</em>, neighbors of a polygon are obtained using <code>adjacent()</code>.
-The output of <code>adjacent()</code> is a matrix, either of two columns with the first being the IDs of the <span class="math inline">\(n\)</span> countries or of <span class="math inline">\(n \times n\)</span> representing the adjacency matrix of the countries.
+<p>In <em>terra</em>, neighbors of a polygon are obtained using <code><a href="https://rspatial.github.io/terra/reference/adjacent.html">adjacent()</a></code>.
+The output of <code><a href="https://rspatial.github.io/terra/reference/adjacent.html">adjacent()</a></code> is a matrix, either of two columns with the first being the IDs of the <span class="math inline">\(n\)</span> countries or of <span class="math inline">\(n \times n\)</span> representing the adjacency matrix of the countries.
 I like more the adjacency matrix, therefore:</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">neigh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">as.list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co">#initialize empty list</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">neigh</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">eu</span><span class="op">$</span><span class="va">NAME_ENGL</span></span>
-<span><span class="va">adj</span> <span class="op">&lt;-</span> <span class="fu">adjacent</span><span class="op">(</span><span class="va">eu</span>, pairs <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">neigh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.list.html">as.list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co">#initialize empty list</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">neigh</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">eu</span><span class="op">$</span><span class="va">NAME_ENGL</span></span>
+<span><span class="va">adj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/adjacent.html">adjacent</a></span><span class="op">(</span><span class="va">eu</span>, pairs <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># then a convoluted code to show the number of neighbors</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ctr</span> <span class="op">&lt;-</span> <span class="va">eu</span><span class="op">[</span><span class="va">adj</span><span class="op">[</span><span class="va">i</span>, <span class="op">]</span> <span class="op">==</span> <span class="fl">1</span>, <span class="op">]</span></span>
 <span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">ctr</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">neigh</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">ctr</span><span class="op">$</span><span class="va">NAME_ENGL</span><span class="op">)</span></span>
+<span>    <span class="va">neigh</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/unique.html">unique</a></span><span class="op">(</span><span class="va">ctr</span><span class="op">$</span><span class="va">NAME_ENGL</span><span class="op">)</span></span>
 <span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>    <span class="va">neigh</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"No neighbours"</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span>
 <span><span class="va">eu</span><span class="op">$</span><span class="va">neigh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">neigh</span>, <span class="va">length</span><span class="op">)</span></span>
 <span><span class="va">eu</span><span class="op">$</span><span class="va">neigh</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">neigh</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="st">"No neighbours"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">eu</span>, <span class="st">"neigh"</span>, </span>
 <span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">eu</span><span class="op">$</span><span class="va">neigh</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span>, <span class="st">"Dark Mint"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
 <p>(Germany truly is the hearth of the EU)</p>
 
 </div>
@@ -228,7 +228,7 @@ I like more the adjacency matrix, therefore:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-08.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

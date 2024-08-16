@@ -45,7 +45,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="a-history-of-gis.html">A history of GIS</a></li>
+<li><a class="" href="the-why-of-gis.html">The why of GIS</a></li>
 <li><a class="" href="projections.html"><span class="header-section-number">1</span> Projections</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="" href="rasters.html"><span class="header-section-number">3</span> Rasters</a></li>
@@ -72,7 +72,7 @@
 </h2>
 <p>Load the vector shapefile of EU countries:</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">eu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="st">"data/EU/EU.shp"</span><span class="op">)</span></span>
 <span><span class="va">eu</span></span></code></pre></div>
 <pre><code>##  class       : SpatVector 
 ##  geometry    : polygons 
@@ -94,7 +94,7 @@
 Additionally, an attribute table is attached to it, providing information about the country name, the ISO3 code, etc.
 You can see full list of attributes using <code>names(eu)</code>:</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">eu</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "CNTR_ID"   "NAME_ENGL" "NAME_FREN" "ISO3_CODE" "SVRG_UN"   "CAPT"     
 ##  [7] "EU_STAT"   "EFTA_STAT" "CC_STAT"   "NAME_GERM" "FID"</code></pre>
 
@@ -124,7 +124,7 @@ You can see full list of attributes using <code>names(eu)</code>:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-08.</p>
+    <p>"<strong>GIS And Remote Sensing For Ecologists</strong>" was written by Emilio Berti. It was last built on 2024-08-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

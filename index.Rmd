@@ -14,9 +14,10 @@ link-citations: yes
 # Preface {-}
 
 I started learning GIS in 2017 during my PhD.
-As most of the programming I know, I learnt it by myself making many mistakes.
-I still make mistakes, which means I am still learning.
-My aim with this course is to be the guide I did not have when I started learning GIS and that would have saved me some of the mistakes.
+I first approached GIS using ArcGIS, which I hated with all my guts.
+As I prefer typing on terminal rather than clicking on icons, I quickly switched to R.
+I will use the R package `terra` thorough this course.
+You can replicate most of the content of this course using python, but I will leave that for another time.
 This course is intended for newcomers to GIS; experienced users should definitely look somewhere else (most likely on [stackoverflow.com](https://stackoverflow.com)).
 
 The course is divided into three main parts:
@@ -25,19 +26,14 @@ The course is divided into three main parts:
   2. Fundamentals for GIS analysis.
   3. GIS analysis with Google Earth Engine.
 
-## Software requirements {-}
-
-In the first part of this course, I will introduce the basic concepts of GIS using R and Python.
-For this, I will use the _terra_ package for R and the _shapely_ module for Python.
-I will focus more often on R than on python.
-
+In the first part of this course, I will introduce the basic concepts of GIS using R.
 In the second part, I will cover the fundamentals of GIS analysis.
-I will explain the theory behind it and complement it with examples from actual analyses, introducing the most common workflows for R and Python.
-I will use the R package _terra_ and the Python modules _shapely_, _geopandas_, _fiona_, and _plotly_.
-
+I will explain the theory behind it and complement it with examples from actual analyses, introducing the most common workflows in R.
 In the third part, I will focus on Google Earth Engine and explain how to move heavy GIS analyses on the cloud.
-This will require a basic understanding of JavaScript and of Python object-oriented programming, as well as to interface with GEE using the _gee_ Python module.
-This part may seem redundant at first (why should I move my computation on Google servers?), but, as your analyses expand in scale and need to access several databases, GEE shines as a great trade-off between complexity and effectiveness.
+This will require a basic understanding of JavaScript.
+It would be great to talk about how to interface with Google Earth Engine using python, but this topic is probably too advanced and will be the focus of another course.
+
+## Software requirements {-}
 
 To install all packages and modules used in this book, you can use the [conda](https://docs.conda.io/en/latest) environment management system.
 The environment file is at [https://github.com/emilio-berti/gis-course/blob/master/conda/gis-course.yml](https://github.com/emilio-berti/gis-course/conda/gis-course.yml).
