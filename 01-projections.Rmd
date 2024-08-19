@@ -69,19 +69,63 @@ Each spatial data must have an associated coordinate reference system (CRS), whi
 In GIS courses, CRS is usually only briefly discussed.
 However, choosing an inappropriate CRS for your analysis can introduce many errors.
 
-## Geographic vs Projected CRS
+## Geographic CRS
 
 A geographic CRS is one where locations of points are described by longitude and latitude, i.e. the angle between the Prime meridian (oh, the mythological creature) and the location and the angle between the Equator and the location, respectively.
 The most used geographic CRS is WGS84 (EPSG:4326).
+Of the many ways to encode the information of a CRS in computers, the easiest for humans to read is the PROJ.4 standard.
+The PROJ.4 of EPSG:4326 is: `+proj=longlat +datum=WGS84 +no_defs +type=crs`.
+In terra, the function `crs(x, proj = TRUE)` return the PROJ notation of `x`, which can be a spatial object or also a registered CRS code:
+
+```{r crs}
+crs("EPSG:4326", proj = TRUE)
+```
+
+Note that `proj=longlat` tells us this is a geographic CRS.
+
+Setting `proj = FALSE` (default), returns the WKT (well-known text) representation:
+
+```{r crs-wkt}
+cat(crs("EPSG:4326"))  # cat to show it nicely
+```
+
+Note that this tells us also important information, for instance the area and scope of the CRS.
+For instance, look at this CRS for the Philippines:
+
+```{r crs-philippine}
+cat(crs("EPSG:3124"))
+```
+
+which specifies the area (`AREA`) and extent (`BBOX`) for which this CRS should be used.
+Check these attributes before using a CRS: you may find out that you are using a CRS developed to have minimal distortion (more about this in the next section) for a part of the world that is not of interest, while it may have a lot of distortion for your region of interest.
+
+## Projected CRS
 
 A projected CRS is a system to represent the 3D Earth surface on a plane.
 Representing a 3D object into a 2D plane accurately is not possible.
-Therefore, projectons always distort a property of the Earth surface, in particular, at least one of: distance, angular conformity, and area.
+Therefore, projections always distort a property of the Earth surface, in particular, at least one of: distance, angular conformity, and area.
 Projections can be grouped into types, depending on which property of the Earth surface they do not distort:
 
-  - Conformal projections: they correctly represent the angles between points and, thus, shapes. E.g., ESRI:54004 (Mercator).
-  - Equidistant: they correctly represent distances. E.g., ESRI:54002.
-  - Equal-area: they corretly represent areas. E.g. ESRI:54034.
+  - Conformal -- they correctly represent the angles between points and, thus, shapes. E.g., ESRI:54004 (Mercator).
+  - Equidistant -- they correctly represent distances. E.g., ESRI:54002.
+  - Equal-area -- they correctly represent areas. E.g. ESRI:54034.
+
+```{r crs-con}
+crs("ESRI:54004", proj = TRUE)
+```
+`proj=merc` is a Mercator projection.
+
+```{r crs-eq}
+crs("ESRI:54002", proj = TRUE)
+```
+
+`proj=eqc` is an equidistant cylindrical projection.
+
+```{r crs-ea}
+crs("ESRI:54034", proj = TRUE)
+```
+
+`proj=cea` is a cylindrical equal-area projection.
 
 ESRI stands for Environmental Systems Research Institute, Inc., which is the company that developed ArcGIS and created a code standard for projections.
 The other commonly used standard is maintained by the European Petroleum Survey Group (EPSG).
@@ -89,5 +133,6 @@ For instance, World Mercator (conformal) is also EPSG:3395.
 
 A common projected CRS is the Universal Transverse Mercator projection (conformal), e.g. EPSG:32632.
 We will talk more about this in a later chapter.
-You can find an overview of ESRI and EPSG projections at <https://spatialreference.org/>.
-Wikipedia also has a nice list with the property of each projection: <https://en.wikipedia.org/wiki/List_of_map_projections>
+At proj.org there is a good list of projections and their attributes: <https://proj.org/en/9.4/operations/projections/index.html>.
+You can find an overview of ESRI and EPSG projections also at <https://spatialreference.org/>.
+Wikipedia also has a nice list with the property of each projection: <https://en.wikipedia.org/wiki/List_of_map_projections>.
