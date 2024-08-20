@@ -1,6 +1,6 @@
 # Convert a vector to a raster
 
-In _terra_, a vector can be converted to a raster by using `rasterize(x, y)`,
+In `terra`, a vector can be converted to a raster by using `rasterize(x, y)`,
 where `x` is the vector to convert to a raster and `y` is a template raster from which the metadata is re-used for `x`:
 ```{r rasterize}
 bio1 <- rast("data/wc2.1_10m_bio_1.tif") #load raster template

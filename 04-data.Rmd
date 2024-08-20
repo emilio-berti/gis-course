@@ -51,10 +51,11 @@ cd ..
 `data/EU/EU.shp` contains the polygons of the countries in the European Union:
 ```{r eu-show}
 eu <- vect("data/EU/EU.shp")
-plot(eu, col = "#001489", border = "white", lw = 2)
+plot(eu, col = "#001489", border = "grey20", lw = 2)
 ```
 
-`data/ISTAT/Limiti01012024_g/Reg01012024_g/Reg01012024_g_WGS84.shp` contains the polygons of the regions (administrative division below the state) of Italy:
+  - `data/ISTAT/Limiti01012024_g/Reg01012024_g/Reg01012024_g_WGS84.shp` contains the polygons of the regions (administrative division below the state) of Italy:
+
 ```{r reg-show}
 reg <- vect("data/ISTAT/Limiti01012024_g/Reg01012024_g/Reg01012024_g_WGS84.shp")
 plot(
@@ -63,7 +64,8 @@ plot(
 )
 ```
 
-`data/ISTAT/Limiti01012024_g/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp` contains the polygons of the provinces (administrative division between commune and region) of Italy:
+  - `data/ISTAT/Limiti01012024_g/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp` contains the polygons of the provinces (administrative division between communes and regions) of Italy:
+
 ```{r province-show}
 italy <- vect("data/ISTAT/Limiti01012024_g/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp")
 plot(
@@ -72,7 +74,8 @@ plot(
 )
 ```
 
-`data/wc2.1_10m_bio_1.tif` is the mean annual temperature (averaged across several decades) at 10 minute resolution from WorldClim. I cropped this for  Europe (excluding parts of Scandinavia to save disk space):
+  - `data/wc2.1_10m_bio_1.tif` is the mean annual temperature (averaged across several decades) at 10 minute resolution from WorldClim. I cropped this for Europe (excluding parts of Scandinavia to save disk space):
+
 ```{r bio1-show}
 bio1 <- rast("data/wc2.1_10m_bio_1.tif")
 plot(bio1, col = hcl.colors(100, "Zissou 1"))

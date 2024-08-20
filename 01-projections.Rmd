@@ -75,7 +75,7 @@ A geographic CRS is one where locations of points are described by longitude and
 The most used geographic CRS is WGS84 (EPSG:4326).
 Of the many ways to encode the information of a CRS in computers, the easiest for humans to read is the PROJ.4 standard.
 The PROJ.4 of EPSG:4326 is: `+proj=longlat +datum=WGS84 +no_defs +type=crs`.
-In terra, the function `crs(x, proj = TRUE)` return the PROJ notation of `x`, which can be a spatial object or also a registered CRS code:
+In `terra`, the function `crs(x, proj = TRUE)` return the PROJ notation of `x`, which can be a spatial object or also a registered CRS code:
 
 ```{r crs}
 crs("EPSG:4326", proj = TRUE)

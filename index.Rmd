@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 site: "bookdown::bookdown_site"
 output: bookdown::bs4_book
 documentclass: book
+geometry: "left=3cm,right=3cm,top=4cm,bottom=3cm"
 citation_package: natbib
 bibliography: ["book.bib", "packages.bib"]
 biblio-style: apalike

@@ -1,4 +1,4 @@
-# Vectors
+# Vectors or Geometries
 
 Vectors (or shapefiles) contain geospatial vector data, also called geometries.
 A shapefile has the extension _.shp_ and it is usually accompanied by other files.
@@ -11,7 +11,7 @@ Common supplementary files are:
 The core concept of shapefiles is that geographic features are stored using three fundamental geometry types:
 
   1. Points, defined by coordinates $(x, y)$.
-  2. Lines, defined by two points and a line interpolating them.
+  2. Lines, defined by two points and a line connecting them.
   3. Polygons, defiend by several lines.
 
 These three fundamental types can also be "stacked", e.g. one spatial feature can be represented by multiple points, lines, and polygons.
@@ -20,9 +20,7 @@ The difference between multilines and polygons is that a polygon inscribe an are
 
 ## Geometries in R
 
-Let's see an exampled in R using the package _terra_. 
-Remember to load the package if you did not already: `library(terra)`.
-In _terra_, all the hustle that came with older GIS software has been removed, and geometries can be simply be created using the `vect()` function.
+In `terra`, all the hustle that came with older GIS software has been removed, and geometries can be simply be created using the `vect()` function.
 
 ```{r}
 xy <- matrix(c(0, 0), ncol = 2)
@@ -40,7 +38,7 @@ poi
 ```
 
 Geometries can be converted into other types by _casting_.
-In _terra_ this has been made extremely easy.
+In `terra` this has been made extremely easy.
 Let's create some points.
 
 ```{r}
@@ -74,8 +72,8 @@ To cast lines to polygons, two points must be identical.
 
 ```{r}
 xy <- matrix(seq_len(10), ncol = 2)
-xy <- rbind(xy, cbind(5, 6)) #add bottom-right point
-xy <- rbind(xy, xy[1, ]) #add again first point
+xy <- rbind(xy, cbind(5, 6))  # add bottom-right point
+xy <- rbind(xy, xy[1, ])  # add again first point
 pois <- vect(xy, crs = "EPSG:4326")
 ls <- as.lines(pois)
 pol <- as.polygons(ls)
@@ -94,20 +92,20 @@ Each geometry has its own set of properties.
 Points have coordinates:
 
 ```{r points-properties}
-geom(pois)[, c("x", "y")] #coordinates of points
+geom(pois)[, c("x", "y")]  # coordinates of points
 ```
 
 Lines have length:
 
 ```{r lines-properties}
-perim(ls) #length of line
+perim(ls)  # length of line
 ```
 
 And polygons have perimeter and area:
 
 ```{r polygons-properties}
-perim(pol) #perimeter of polygon
-expanse(pol, unit = "km") #area of polygon
+perim(pol)  # perimeter of polygon
+expanse(pol, unit = "km")  # area of polygon
 ```
 
 Note that lines and polygons also have coordinates, which are the breaking points of the straight lines, defined by the points:
@@ -118,7 +116,7 @@ geom(pol)
 
 ## Create geometry in R interactively
 
-R _terra_ has a nice feature that allows to draw on a plot and save the resulting geometry in the environment.
+A nice feature of `terra` is that it allows to draw on a plot and save the resulting geometry in the environment.
 This is achieved using the function `draw()`, which takes as argument the type of geometry you want to draw (_points_, _line_, _polygon_, or _extent_).
 ```{r draw, eval=FALSE}
 plot(pol, col = "dodgerblue3", alpha = .5)
@@ -127,6 +125,20 @@ drawing = draw("lines")
 And then just left-click on the map.
 When you are done, right click and the output will be saved in the variable `drawing`.
 
-<!-- ![Example of drawing a line using _terra_ draw().](figures/draw-show.gif) -->
+<!-- ![Example of drawing a line using `terra` draw().](figures/draw-show.gif) -->
 
 This is very useful when you want to zoom on a region of a map or draw coarse polygons but don't want to open a more interactive GIS software, such as QGIS.
+
+## Reading and writing shapefiles
+
+The function `vect()` is also used to read shapefiles:
+
+```{r read-shapes, eval=FALSE}
+vect(<filename>)
+```
+
+To write shapefiles, use `writeVector()`.
+
+```{r write-shapes, eval=FALSE}
+writeVector(<spatVect>, <filename>)
+```
