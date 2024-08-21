@@ -1,0 +1,38 @@
+# Exercises
+
+## 6.1 Size of neighbors of EU states
+
+Using `data/EU/EU.shp`, find the size ($km^2$) of the neighbors of each state and make a map with the states colored by the size of the largest neighbor.
+
+**Solution**
+
+```{r ex-6.1}
+eu <- vect("data/EU/EU.shp")
+
+# neighbors and country size
+neigh <- adjacent(eu, type = "touches", pairs = FALSE)
+dimnames(neigh) <- list(eu$NAME_ENGL, eu$NAME_ENGL)
+size_km <- expanse(eu, unit = "km")
+names(size_km) <- eu$NAME_ENGL
+
+# calculate maximum neighbor size
+max_neigh_size <- as.list(rep(NA, length(eu)))
+names(max_neigh_size) <- eu$NAME_ENGL
+for (x in names(max_neigh_size)) {
+  if (any(neigh[, x] == 1)) {  # some states have no neighbors
+    max_neigh_size[[x]] <- max(size_km[which(neigh[, x] == 1)])
+  }
+}
+
+# add attribute to the shapefile
+eu$max_size_neighbor <- max_neigh_size
+
+# plot it
+plot(eu, col = "grey80")  # base map to show isolated countries
+plot(
+  eu, "max_size_neighbor",
+  type = "continuous",
+  col = hcl.colors(100, "Emrld"),
+  add = TRUE
+)
+```

@@ -87,7 +87,7 @@ points(eu_centr, col = "#FFDD00", cex = 2, pch = 3, lw = 2)
 
 ## Buffer
 To _buffer_ a polygon is to extend its perimeter in all directions at the same time, i.e. orthogonally to the tangent line of each point.
-Buffering is achieved in _terra_ using `buffer(x, width)`.
+Buffering is achieved in `terra` using `buffer(x, width)`.
 It is easier to see it than to explain it.
 
 ```{r buffer}
@@ -97,7 +97,7 @@ lines(b, col = "tomato", lw = 2)
 ```
 
 ## Neighbors of polygons
-In _terra_, neighbors of a polygon are obtained using `adjacent()`.
+In `terra`, neighbors of a polygon are obtained using `adjacent()`.
 The output of `adjacent()` is a matrix, either of two columns with the first being the IDs of the $n$ countries or of $n \times n$ representing the adjacency matrix of the countries.
 I like more the adjacency matrix, therefore:
 

@@ -1,4 +1,4 @@
-# Mapping
+<!-- # Mapping
 
 One of the most common goal of GIS is to produce a map of a phenomenon or process.
 
@@ -85,4 +85,4 @@ plot(
   axes = FALSE,
   main = "Variability (CV)"
 )
-```
+``` -->
